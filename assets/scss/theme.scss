@@ -1,0 +1,8 @@
+@import "./variables";
+@import "../font-awesome/scss/font-awesome";
+// General
+@import "./custom/general";
+@import "./custom/responsive";
+// Home Page
+@import './custom/components/cover';
+@import './custom/components/forms';
