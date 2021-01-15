@@ -1,0 +1,15 @@
+#docker hub account:
+u/p: mapstorevn/mapstorevn
+
+# Khi có thay đổi gì trong package.json thì cần build lại base docker image
+./docker-build-base-image.sh
+
+# build docker image mapstore-web
+./docker-build.sh ${version}
+ví dụ như build docker image 1.0.0: ./docker-build.sh 1.0.0
+
+#deploy lên production
+1. Open: https://k8s-mapstore.mapstore.vn/#/overview?namespace=mapstorevn
+u/p: mapstore/mapstore
+
+2. Mở deployment edit mapstore-web-app-deployment, tăng version của docker image lên. Đợi xíu là deploy được.
