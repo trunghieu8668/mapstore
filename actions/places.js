@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import Fetch from 'isomorphic-fetch';
 import { API } from '../config';
 
 const fakeDataPlaces = {
@@ -173,7 +173,7 @@ const fakeDataPlaces = {
 }
 
 export const listPlaces = slug => {
-  return fetch(`http://newsapi.org/v2/everything?domains=vnexpress.net&apiKey=56ef72535e5844398cd20d0eb90dc549&i=${slug}`, {
+  return Fetch(`http://newsapi.org/v2/everything?domains=vnexpress.net&apiKey=56ef72535e5844398cd20d0eb90dc549&i=${slug}`, {
     method: 'GET'
   })
   .then(response => {
@@ -237,7 +237,7 @@ const dataSingle = {
   }
 }
 export const singlePlace = slug => {
-  return fetch(`http://newsapi.org/v2/everything?domains=vnexpress.net&apiKey=56ef72535e5844398cd20d0eb90dc549&i=${slug}`, {
+  return Fetch(`http://newsapi.org/v2/everything?domains=vnexpress.net&apiKey=56ef72535e5844398cd20d0eb90dc549&i=${slug}`, {
     method: 'GET'
   })
   .then(response => {
@@ -248,7 +248,7 @@ export const singlePlace = slug => {
 
 
 export const listRelated = slug => {
-  return fetch(`http://newsapi.org/v2/everything?domains=vnexpress.net&apiKey=56ef72535e5844398cd20d0eb90dc549&i=${slug}`, {
+  return Fetch(`http://newsapi.org/v2/everything?domains=vnexpress.net&apiKey=56ef72535e5844398cd20d0eb90dc549&i=${slug}`, {
     method: 'GET'
   })
   .then(response => {

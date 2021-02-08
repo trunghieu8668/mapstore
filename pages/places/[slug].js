@@ -1,5 +1,3 @@
-
-
 import Head from 'next/head';
 import Link from 'next/link';
 import { Container, Row, Col } from 'reactstrap';
@@ -9,7 +7,6 @@ import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
 import { listPlaces } from '../../actions/places';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import renderHTML from 'react-render-html';
 import moment from 'moment';
 import Card from '../../components/places/Card';
 import ListByCity from '../../components/sidebar/listByCity'
@@ -21,7 +18,7 @@ const Places = ({ data, query }) => {
           <Layout title={ title } description={data.description} keywords="" className="wrapper-site bg-light">
             <section className="cover-intro" id="category">
               <div className="cover-intro-inner bg d-flex align-items-end flex-column">
-                <Header />
+                <Header isHome={false}/>
                 <div className="wrapper-contain clearfix w-100 pt-4 pb-4 position-relative">
                   <Container>
                     <h1 className="h3 text-dark clearfix d-block ">{title}</h1>
@@ -45,8 +42,8 @@ const Places = ({ data, query }) => {
     );
 };
 
-Places.getInitialProps = ({ query }) => {
-    return listPlaces(query.slug).then(data => {
+Places.getInitialProps = async ({ query }) => {
+    return await listPlaces(query.slug).then(data => {
         if (data.error) {
             console.log(data.error);
         } else {

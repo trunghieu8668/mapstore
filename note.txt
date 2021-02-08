@@ -1,0 +1,6 @@
+#Khi clone về máy https://github.com/trunghieu8668/mapstore/tree/staging
+npm install 
+npm i --save-dev css-loader file-loader postcss-loader url-loader node-sass
+npm rebuild node-sass
+npm run build
+npm run dev

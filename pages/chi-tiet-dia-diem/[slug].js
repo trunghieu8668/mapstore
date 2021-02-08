@@ -8,7 +8,6 @@ import Footer from '../../components/common/Footer'
 
 import { singlePlace, listRelated } from '../../actions/places';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import renderHTML from 'react-render-html';
 import moment from 'moment';
 import Card from '../../components/places/Card';
 import ListByCity from '../../components/sidebar/listByCity'
@@ -39,7 +38,7 @@ const SinglePlaces = ({ data, query }) => {
         <Layout title={ data.data.name } description={data.data.description} keywords="" className="wrapper-site bg-light">
           <section className="cover-intro" id="category">
             <div className="cover-intro-inner bg d-flex align-items-end flex-column">
-              <Header />
+              <Header isHome={false}/>
               <div className="wrapper-contain clearfix w-100 pt-4 pb-4 position-relative">
                 <Container>
                   <h1 className="h3 text-dark clearfix d-block ">{data.name}</h1>
@@ -53,6 +52,19 @@ const SinglePlaces = ({ data, query }) => {
                         <li className="item h6 font-weight-normal">
                           <b>Điện thoại: </b> {data.data.phones && <a href={`tel:${data.data.phones}`}>{data.data.phones}</a>} 
                         </li>
+                        <li className="item h6 font-weight-normal">
+                          <b>Fax: </b> {data.data.faxNumber && <a href={`fax:${data.data.faxNumber}`}>{data.data.faxNumber}</a>} 
+                        </li>
+                        <li className="item h6 font-weight-normal">
+                          <b>Email: </b> <a href={`mailto:${data.data.email}`}>{data.data.email}</a>
+                        </li>
+                        <li className="item h6 font-weight-normal">
+                          <b>Mã số thuế: </b> {data.data.taxCode}
+                        </li>
+                        <li className="item h6 font-weight-normal">
+                          <b>Website: </b> {data.data.website}
+                        </li>
+                        
                         <li className="item h6 font-weight-normal">
                           {data.data.categories.length > 0 && <label className="font-weight-bold float-left mr-2">Loại ngành nghề:</label>}
                           <ul className="d-block">
@@ -69,6 +81,7 @@ const SinglePlaces = ({ data, query }) => {
                           </ul>
                         </li>                      
                       </ul>
+
                       {related && related.length > 0 && <h4 className="mt-5 d-block border-top pt-3">Có thể bạn quan tâm</h4>}
                       {showRelated()}
                     </Col>
@@ -86,8 +99,8 @@ const SinglePlaces = ({ data, query }) => {
   );
 };
 
-SinglePlaces.getInitialProps = ({ query }) => {
-  return singlePlace(query.slug).then(data => {
+SinglePlaces.getInitialProps = async ({ query }) => {
+  return await singlePlace(query.slug).then(data => {
     if (data.error) {
       console.log(data.error);
     } else {

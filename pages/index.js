@@ -7,7 +7,7 @@ export default function Home() {
     <Layout title="Mapstore - Tìm là thấy" description="Trang thông tin địa điểm" keywords="thông tin công ty" className="wrapper-site bg-light">
       <section className="cover-intro" id="home">
         <div className="cover-intro-inner bg d-flex align-items-end flex-column">
-          <Header />
+          <Header isHome={true}/>
           <BannerSection />
           <Footer />
         </div>
