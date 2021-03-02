@@ -67,3 +67,29 @@ module.exports = ({ dynamicAssetPrefix = false, ...nextConfig } = {}) => {
     }
   })
 }
+
+module.exports = {
+  async rewrites() {
+    return [      
+      {
+        source: '/about-us',
+        destination: '/about',
+      },
+      // Path Matching - will match `/post/a` but not `/post/a/b`
+      {
+        source: '/post/:slug',
+        destination: '/news/:slug',
+      },
+      // Wildcard Path Matching - will match `/blog/a` and `/blog/a/b`
+      {
+        source: '/blog/:slug*',
+        destination: '/news/:slug*',
+      },
+      // nhóm địa điểm
+      {
+        source: '/nhom-dia-diem/:slug',
+        destination: '/places/:slug',
+      },
+    ]
+  },
+}
