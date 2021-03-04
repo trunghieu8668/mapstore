@@ -1,12 +1,8 @@
-import Head from 'next/head';
-import Link from 'next/link';
 import { Container, Row, Col } from 'reactstrap';
-
 import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
-import { listPlacesByCategoryId } from '../../actions/places';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
+import { listAllGroupCategory } from '../../actions/places';
 import moment from 'moment';
 import Card from '../../components/places/Card';
 import ListByCity from '../../components/sidebar/listByCity'
@@ -14,13 +10,14 @@ import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
 
 
-const Places = ({ data, query }) => {
+const CategoryGroup = ({ data }) => {
 
-  const title = data.data.name ? data.data.name : ''
-  const description = data.data.description ? data.data.description : ''
+  // const title = data.data.name ? data.data.name : ''
+  // const description = data.data.description ? data.data.description : ''
   return (
     <>
-      <Layout title={title} description={description} keywords="" className="wrapper-site bg-light">
+      {JSON.stringify(data)}
+      {/* <Layout title={title} description={description} keywords="" className="wrapper-site bg-light">
         <section className="cover-intro" id="category">
           <div className="cover-intro-inner bg d-flex align-items-end flex-column">
             <ScrollHeader isHome={false} />
@@ -42,19 +39,19 @@ const Places = ({ data, query }) => {
             <Footer />
           </div>
         </section>
-      </Layout>
+      </Layout> */}
     </>
   );
 };
 
-Places.getInitialProps = async ({ query }) => {
-  return await listPlacesByCategoryId(query.slug.toLowerCase()).then(data => {
+CategoryGroup.getInitialProps = async () => {
+  return await listAllGroupCategory().then(data => {
     if (data.message) {
       console.log(data.message);
     } else {
-      return { data, query };
+      return { data };
     }
   });
 };
 
-export default Places;
+export default CategoryGroup;

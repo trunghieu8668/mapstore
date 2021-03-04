@@ -90,6 +90,15 @@ module.exports = {
         source: '/nhom-dia-diem/:slug',
         destination: '/places/:slug',
       },
+      // Danh sach loai dia diem
+      {
+        source: '/loai-dia-diem',
+        destination: '/category-group',
+      },
+      {
+        source: '/loai-dia-diem/:slug',
+        destination: '/category-group/:slug',
+      },
     ]
   },
 }

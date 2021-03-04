@@ -3,7 +3,7 @@
   position: relative;
   padding: 0;
   .cover-intro-inner {
-    height: 100vh;
+    min-height: 100vh;
   }
   &:before {
     content: "";

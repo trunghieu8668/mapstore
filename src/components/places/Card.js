@@ -9,7 +9,7 @@ const Card = ({ data }) => {
     return (
       <article className="place-item mt-2 mb-4">
         <Row>
-          <Col xs={3}>
+          <Col xs={3} lg={2}>
             {
               data.logo && data.logo.length > 0 ? (
                 <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper">
@@ -22,7 +22,7 @@ const Card = ({ data }) => {
               )
             }
           </Col>
-          <Col xs={9}>
+          <Col xs={9} lg={10}>
             <Link href={`/chi-tiet-dia-diem/${slugify(places.id, {lower: true})}`}>
                 <a className="h6 font-weight-normal" title={places.name}>{places.name}</a>
             </Link>

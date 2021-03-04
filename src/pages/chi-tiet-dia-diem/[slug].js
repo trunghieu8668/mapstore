@@ -98,13 +98,13 @@ const SinglePlaces = ({ data, query }) => {
                               </li>
                               
                             </ul>
-                            <div class="d-block mt-5 mb-4">
-                              <h3 class="h5">GIỚI THIỆU</h3>
-                              <div class="clearfix"></div>
+                            <div className="d-block mt-5 mb-4">
+                              <h3 className="h5">GIỚI THIỆU</h3>
+                              <div className="clearfix"></div>
                               <article>
                                 {data.data.description ? (
                                   <Suspense dangerouslySetInnerHTML={{ __html: data.data.description }} />
-                                ) : <span class="text-muted text-italic">Nội dung đang cập nhật</span>}
+                                ) : <span className="text-muted text-italic">Nội dung đang cập nhật</span>}
                               </article>
                             </div>
                           </Tab>

@@ -1,12 +1,8 @@
-import Head from 'next/head';
-import Link from 'next/link';
 import { Container, Row, Col } from 'reactstrap';
-
 import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
-import { listPlacesByCategoryId } from '../../actions/places';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
+import { listAllGroupCategory } from '../../actions/places';
 import moment from 'moment';
 import Card from '../../components/places/Card';
 import ListByCity from '../../components/sidebar/listByCity'
@@ -14,12 +10,16 @@ import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
 
 
-const Places = ({ data, query }) => {
+const CategoryGroup = ({ data, query }) => {
+  const categoryGroup = data.data.data;
+  const formatSlug = query.slug.replace("-", "_")
+  const list = categoryGroup.filter(t => t.id === formatSlug );
+  const title = list[0].name;
+  const description = null;
 
-  const title = data.data.name ? data.data.name : ''
-  const description = data.data.description ? data.data.description : ''
   return (
     <>
+      
       <Layout title={title} description={description} keywords="" className="wrapper-site bg-light">
         <section className="cover-intro" id="category">
           <div className="cover-intro-inner bg d-flex align-items-end flex-column">
@@ -28,9 +28,9 @@ const Places = ({ data, query }) => {
               <Container>
                 <h1 className="h3 text-dark clearfix d-block ">{title}</h1>
                 <Row>
-                  <Col md={8} lg={9}>
-                    {data.data.data.map((b, i) => (
-                      <Card key={i} data={b} />
+                  <Col md={8} lg={9}>                    
+                    {list[0].categories.map((b, i) => (
+                      <div key={i}>{b.label}</div>
                     ))}
                   </Col>
                   <Col md={4} lg={3}>
@@ -47,8 +47,8 @@ const Places = ({ data, query }) => {
   );
 };
 
-Places.getInitialProps = async ({ query }) => {
-  return await listPlacesByCategoryId(query.slug.toLowerCase()).then(data => {
+CategoryGroup.getInitialProps = async ({ query }) => {
+  return await listAllGroupCategory().then(data => {
     if (data.message) {
       console.log(data.message);
     } else {
@@ -57,4 +57,4 @@ Places.getInitialProps = async ({ query }) => {
   });
 };
 
-export default Places;
+export default CategoryGroup;
