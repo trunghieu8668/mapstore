@@ -1,4 +1,4 @@
-// 
+//
 // general.scss
 //
 
@@ -25,23 +25,74 @@ body {
   height: 100%;
   flex-direction: column;
 }
-.center { 
-  display: -webkit-box; 
-  display: -ms-flexbox; 
-  display: flex; 
-  -webkit-box-orient: horizontal; 
-  -webkit-box-direction: normal; 
-  -ms-flex-direction: row; 
-  flex-direction: row; 
-  -webkit-box-align: center; 
-  -ms-flex-align: center; 
-  align-items: center; 
-  -webkit-box-pack: center; 
-  -ms-flex-pack: center; 
-  justify-content: center 
+.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center
 }
 a {color: #333;}
 .text-gray > a, .text-gray {color: var(--grey);}
+// Figure
+.imageLinkWrapper {
+    position: relative;
+    text-align: center
+}
+
+.imageLinkWrapper:before {
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) inset;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+
+a:hover .imageLinkWrapper:before {
+    -webkit-box-shadow: 0 0 0 3px #007FC4 inset, 0 0 100px rgba(0, 0, 0, 0.7) inset !important;
+    box-shadow: 0 0 0 3px #007FC4 inset, 0 0 100px rgba(0, 0, 0, 0.7) inset !important;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease
+}
+
+.imageLinkWrapper img {
+    left: 50%;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.figure-haft {
+  padding-top: 67%;position: relative;overflow: hidden;
+}
+.figure-haft .f-select {position: absolute;top: 0 ;left: 50% !important;transform: translateX(-50%) !important;min-width: inherit !important;width:  auto !important; height: auto !important;}
 // FONT SIZE
 .font-size-1 {
 	font-size: 8px;
@@ -161,11 +212,11 @@ a {color: #333;}
 	font-size: 13px
 }
 /**************************
- Header section 
+ Header section
 *************************/
 #Header {
   z-index: 600;
-  width: 100%; 
+  width: 100%;
   padding-top: 10px;
   &.nav-lg {
     padding: 2rem 1rem;
@@ -197,7 +248,7 @@ a {color: #333;}
     align-items: center;
     margin: 0;
     border: 0;
-    .logo {      
+    .logo {
       img {
         max-height: 100px;
       }
@@ -264,7 +315,7 @@ a {color: #333;}
         }
       }
       .sub-menu > a,
-      .dropdown {        
+      .dropdown {
         &:before {
           position: absolute;
           font: normal normal normal 14px/1 $font-awesome;
@@ -274,7 +325,7 @@ a {color: #333;}
           content: "\f0d7";
         }
       }
-      .dropdown {        
+      .dropdown {
         &:before {
           content: "\f0d7";
         }
@@ -360,7 +411,7 @@ a {color: #333;}
 }
 
 .header-scroll-wrapper {
-  position: relative;  
+  position: relative;
   z-index: 99;
   &.fixed {
     position: fixed;
@@ -386,7 +437,7 @@ a {color: #333;}
 	.tab-menu-link {
 		-webkit-transition: .4s;
 		transition: .4s;
-    font-weight: 500;
+    font-weight: 700;
     border: none;
     font-size: 14px;
     color: #6b6e6f;
@@ -406,5 +457,6 @@ a {color: #333;}
 	}
 }
 .tab-content {
-  padding: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px
 }
