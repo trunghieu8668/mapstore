@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { Container, Row, Col } from 'reactstrap';
-
+import slugify from 'slugify'
 import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
@@ -48,11 +48,12 @@ const Places = ({ data, query }) => {
 };
 
 Places.getInitialProps = async ({ query }) => {
-  return await listPlacesByCategoryId(query.slug.toLowerCase()).then(data => {
+  const slug = slugify(query.slug, {lower: true, locale: 'vi', replacement: '_'}).replace("-", "_");
+  return await listPlacesByCategoryId(slug).then(data => {
     if (data.message) {
       console.log(data.message);
     } else {
-      return { data, query };
+      return { data, query: slug };
     }
   });
 };

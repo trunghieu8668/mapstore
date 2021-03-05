@@ -4,7 +4,7 @@ import Image from 'next/image'
 import {api} from '../../fakeapi/category'
 import {Container, Row, Col} from 'reactstrap'
 import slugify from 'slugify'
-const place_url = process.env.PLACES_URL ? process.env.PLACES_URL : 'nhom-dia-diem'
+const categoryGroupUrl = process.env.CATEGORY_GROUP_URL ? process.env.CATEGORY_GROUP_URL : 'loai-dia-diem'
 
 const CategoryList = () => {
   return (
@@ -13,7 +13,7 @@ const CategoryList = () => {
         {
           api.map((data, i) => (
             <Col key={i} className="item-list">
-              <Link href={`/${place_url}/${slugify(data.name, {lower: true, replacement: '_'})}`}>
+              <Link href={`/${categoryGroupUrl}/${slugify(data.name, {lower: true, replacement: '-'})}`}>
                 <a className="item-link shadow-sm border">
                   <div className="inner">
                     <figure className="icon">

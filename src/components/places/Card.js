@@ -26,7 +26,7 @@ const Card = ({ data }) => {
             <Link href={`/chi-tiet-dia-diem/${slugify(places.id, {lower: true})}`}>
                 <a className="h6 font-weight-normal" title={places.name}>{places.name}</a>
             </Link>
-            <address className="mb-0"><b>Địa chỉ:</b> {places.address}</address>
+            <address className="mb-0"><b>Địa chỉ:</b> {places.address}{places.ward && ', ' + places.ward}{places.district && ', ' + places.district}{places.city && ', ' + places.city}</address>
             <b>Điện thoại: </b> {places.phones}
           </Col>
         </Row>

@@ -8,7 +8,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
 import { singlePlace, listRelated } from '../../actions/places';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
+import { API, DOMAIN, APP_NAME, FB_APP_ID, PLACES_URL } from '../../../config';
 import moment from 'moment';
 import Card from '../../components/places/Card';
 import ListByCity from '../../components/sidebar/listByCity'
@@ -69,7 +69,9 @@ const SinglePlaces = ({ data, query }) => {
                             </h1>
                             <div className="mb-0">
                               {
-                                data.data.categories
+                                <Link href={`/${PLACES_URL}/${slugify(data.data.categories, {lower: true, locale: 'vi', strict: true })}`}>
+                                  <a className="h6 font-weight-normal" title={data.data.categories}>{data.data.categories}</a>
+                                </Link>
                               }
                             </div>
                           </div>
@@ -96,7 +98,7 @@ const SinglePlaces = ({ data, query }) => {
                                   <b>Email: </b> <a href={`mailto:${data.data.email}`}>{data.data.email}</a>
                                 </span>
                               </li>
-                              
+
                             </ul>
                             <div className="d-block mt-5 mb-4">
                               <h3 className="h5">GIỚI THIỆU</h3>
