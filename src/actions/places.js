@@ -4,15 +4,15 @@ import { API, APIKEY, PAGESIZE } from '../../config';
 import { fakeDataPlaces } from '../fakeapi/places'
 const token = "MQk1lSVNfFMmge8up5rzUZuMJwMraJvY"
 
-export const listPlacesByCategoryId = slug => {
-  return Fetch(`${API}/public/places?categoryId=${slug}&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=${PAGESIZE}`, {
+export const listPlacesByCategoryId = (slug, page) => {
+  return Fetch(`${API}/public/places?categoryId=${slug}&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=${page !== undefined ? page : 0}&pageSize=${PAGESIZE}`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`
     }
   })
   .then(response => {
-    return response.json();
+    return response.json()
   })
   .catch(err => console.log(err));
 };

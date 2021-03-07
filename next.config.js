@@ -99,6 +99,7 @@ module.exports = {
         source: '/loai-dia-diem/:slug',
         destination: '/category-group/:slug',
       },
+      
     ]
   },
 }

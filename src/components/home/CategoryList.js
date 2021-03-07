@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {api} from '../../fakeapi/category'
 import {Container, Row, Col} from 'reactstrap'
 import slugify from 'slugify'
+import _ from 'lodash'
 const categoryGroupUrl = process.env.CATEGORY_GROUP_URL ? process.env.CATEGORY_GROUP_URL : 'loai-dia-diem'
 
 const CategoryList = () => {
@@ -13,7 +14,7 @@ const CategoryList = () => {
         {
           api.map((data, i) => (
             <Col key={i} className="item-list">
-              <Link href={`/${categoryGroupUrl}/${slugify(data.name, {lower: true, replacement: '-'})}`}>
+              <Link href={`/${categoryGroupUrl}/${data.id.replace(/_/g, "-")}`}>
                 <a className="item-link shadow-sm border">
                   <div className="inner">
                     <figure className="icon">
