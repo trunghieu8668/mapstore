@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap';
 // import { Breadcrumbs } from '../../helpers/Breadcrumbs'
 import Pagination from 'next-pagination'
@@ -20,10 +20,10 @@ const CategoryGroup = ({ data, query, page }) => {
   const categoryGroup = data && data.status === 0 ? data.data.data : [];
   const formatSlug = query.slug.replace(/-/g, "_");
   // const breadcrumbs = Breadcrumbs();
-  const list = categoryGroup ? categoryGroup.filter(t => t.id === formatSlug ) : [];
+  const list = categoryGroup ? categoryGroup.filter(t => t.id === formatSlug) : [];
   const title = list && list.length > 0 ? list[0].name : '';
   const description = null;
-  const [categoryGroupValue, setCategoryGroupValue] = useState({"categoryId":null})
+  const [categoryGroupValue, setCategoryGroupValue] = useState({ "categoryId": null })
   const [dataValues, setDataValues] = useState({})
   const [firstChecked, setFirstChecked] = useState(null)
   // Paging
@@ -34,18 +34,18 @@ const CategoryGroup = ({ data, query, page }) => {
     setCategoryGroupValue({ ...categoryGroupValue, [name]: value })
   }
   const init = () => {
-    categoryGroupValue.categoryId !== null && listPlacesByCategoryId(slugify(categoryGroupValue.categoryId, {lower: true, strict: true, locale: 'vi', replacement: '_'}), (page - 1)).then(data => {
+    categoryGroupValue.categoryId !== null && listPlacesByCategoryId(slugify(categoryGroupValue.categoryId, { lower: true, strict: true, locale: 'vi', replacement: '_' }), (page - 1)).then(data => {
       if (data.message) {
         console.log(data.message);
-      } 
+      }
       else {
         return (setDataValues(data), setTotal(data.data.total))
       }
     });
   }
-  useEffect(()=> {
+  useEffect(() => {
     init()
-  },[categoryGroupValue, page])
+  }, [categoryGroupValue, page])
   const sizePerPageList = [10, 15, 20];
   return (
     <>
@@ -70,7 +70,7 @@ const CategoryGroup = ({ data, query, page }) => {
                           value={b.label}
                           label={b.label}
                           name="filterCheckListRadios"
-                          id={slugify(b.label, {lower: true, strict: true, locale: 'vi', replacement: '-'}) + '-' + i}
+                          id={slugify(b.label, { lower: true, strict: true, locale: 'vi', replacement: '-' }) + '-' + i}
                           onChange={handleChangeChecked("categoryId")}
                         />
                       ))}
@@ -86,8 +86,8 @@ const CategoryGroup = ({ data, query, page }) => {
                       <>Không tìm thấy</>
                     )}
                     <div className="clearfix"></div>
-                    <br/>
-                    {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle}/> }
+                    <br />
+                    {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
                   </Col>
                 </Row>
               </Container>
