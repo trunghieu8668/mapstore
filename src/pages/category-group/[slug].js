@@ -98,7 +98,7 @@ const CategoryGroup = ({ data, query, page }) => {
                 {/* {breadcrumbs} */}
                 <Row>
                   <Col md={5} lg={4} xl={4} className="order-md-2">
-                    {JSON.stringify(firstChecked)}
+                    {/* {JSON.stringify(firstChecked)} */}
                     {dispense}
                     <h4 className="font-size-6 font-weight-semibold mb-6">Danh mục</h4>
                     <div className="list-unstyled filter-check-list">
@@ -123,7 +123,7 @@ const CategoryGroup = ({ data, query, page }) => {
                             value={b.label}
                             label={b.label}
                             name="filterCheckListRadios"
-                            ref={() => { i === 0 && firstChecked === null && dispense(array[0]) }}
+                            // ref={() => { i === 0 && firstChecked === null && dispense(array[0]) }}
                             id={slugify(b.label, { lower: true, strict: true, locale: 'vi', replacement: '-' }) + '-' + i}
                             onChange={handleChangeChecked("categoryId")}
                           // onClick={
