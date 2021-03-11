@@ -5,16 +5,14 @@ const { publicRuntimeConfig } = getConfig();
 
 class MyDocument extends Document {
   setGoogleTags() {
-    if (publicRuntimeConfig.PRODUCTION) {
-      return {
-        __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-EMK0T436Q8');
-        `
-      };
+    return {
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-EMK0T436Q8');
+      `
     }
   }
 
