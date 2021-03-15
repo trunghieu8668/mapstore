@@ -11,12 +11,23 @@ export const listPlacesByCategoryId = (slug, page) => {
       "apikey": `${APIKEY}`
     }
   })
-  .then(response => {
-    return response.json()
-  })
-  .catch(err => console.log(err));
+    .then(response => {
+      return response.json()
+    })
+    .catch(err => console.log(err));
 };
-
+export const listSearchPlaces = (slug, page) => {
+  return Fetch(`${API}/public/places?categoryId=0&searchName=${slug}&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=${page !== undefined ? page : 0}&pageSize=${PAGESIZE}`, {
+    method: 'GET',
+    headers: {
+      "apikey": `${APIKEY}`
+    }
+  })
+    .then(response => {
+      return response.json()
+    })
+    .catch(err => console.log(err));
+};
 export const listAllGroupCategory = () => {
   return Fetch(`${API}/public/category-group`, {
     method: 'GET',
@@ -24,10 +35,10 @@ export const listAllGroupCategory = () => {
       "apikey": `${APIKEY}`
     }
   })
-  .then(response => {
-    return response.json();
-  })
-  .catch(err => console.log(err));
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
 };
 
 
@@ -50,10 +61,10 @@ export const singlePlace = slug => {
       "apikey": `${APIKEY}`
     }
   })
-  .then(response => {
-    return response.json();
-  })
-  .catch(err => console.log(err));
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
 };
 
 export const listRelated = slug => {
@@ -61,7 +72,7 @@ export const listRelated = slug => {
   //   method: 'GET'
   // })
   // .then(response => {
-    return fakeDataPlaces;
+  return fakeDataPlaces;
   // })
   // .catch(err => console.log(err));
 };

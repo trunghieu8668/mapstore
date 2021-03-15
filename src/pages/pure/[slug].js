@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap';
 import { RadioButton } from 'primereact/radiobutton';
 
 // import { Breadcrumbs } from '../../helpers/Breadcrumbs'
@@ -92,67 +91,36 @@ const CategoryGroup = ({ data, query, page }) => {
     <>
 
       <Layout title={title} description={description} keywords="" className="wrapper-site">
-        <section className="category-group-page" id="category-group-page">
-          <div className="wrapper bg d-flex align-items-end flex-column">
-            <ScrollHeader isHome={false} />
-            <div className="wrapper-contain clearfix w-100 pt-4 pb-4 position-relative">
-              <Container>
-                {/* {breadcrumbs} */}
-                <Row>
-                  <Col md={5} lg={4} xl={4} className="order-md-2">
-                    {/* {JSON.stringify(firstChecked)} */}
-                    {dispense}
-                    <h4 className="font-size-6 font-weight-semibold mb-6">Danh mục</h4>
-                    <div className="list-unstyled filter-check-list">
-                      {/* <Form.Check
-                        className="mb-2 item"
-                        defaultChecked={true}
-                        type="radio"
-                        value="null"
-                        label="Không chọn"
-                        name="filterCheckListRadios"
-                        id="filterCheckListRadios"
-                        onChange={handleChangeChecked("categoryId")}
-                      /> */}
-                      {
-                        list && list.length > 0 &&
-                        list[0].categories.map((b, i, array) => (
-                          <div className="p-field-radiobutton">
-                            <RadioButton
-                              inputId={slugify(b.label, { lower: true, strict: true, locale: 'vi', replacement: '-' }) + '-' + i}
-                              name="filterCheckListRadios"
-                              value={b.label}
-                              onChange={handleChangeChecked("categoryId")}
-                              checked={i === 0 ? true : false}
-                            />
+        <div className="card">
+          {/* <Form.Check
+            className="mb-2 item"
+            defaultChecked={true}
+            type="radio"
+            value="null"
+            label="Không chọn"
+            name="filterCheckListRadios"
+            id="filterCheckListRadios"
+            onChange={handleChangeChecked("categoryId")}
+          /> */}
+          {
+            list && list.length > 0 &&
+            list[0].categories.map((b, i, array) => (
+              <div className="p-field-radiobutton">
+                <RadioButton
+                  inputId={slugify(b.label, { lower: true, strict: true, locale: 'vi', replacement: '-' }) + '-' + i}
+                  name="filterCheckListRadios"
+                  value={b.label}
+                  onChange={handleChangeChecked("categoryId")}
+                  checked={i === 0 ? true : false}
+                />
 
-                            <label htmlFor={slugify(b.label, { lower: true, strict: true, locale: 'vi', replacement: '-' }) + '-' + i}>
-                              {b.label}
-                            </label>
-                          </div>
-                        ))
-                      }
-                    </div>
-                  </Col>
-                  <Col md={8} lg={8} className="order-md-1">
-                    <h1 className="h3 text-dark clearfix d-block mb-4">{title}</h1>
-                    {dataValues && dataValues.status === 0 && dataValues.data.total > 0 ? (
-                      dataValues.data.data.map((b, i) => (
-                        <Card key={i} data={b} />
-                      ))
-                    ) : (
-                      <>Không tìm thấy</>
-                    )}
-                    <div className="clearfix"></div>
-                    <br />
-                    {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
-                  </Col>
-                </Row>
-              </Container>
-            </div>
-            <Footer />
-          </div>
-        </section>
+                <label htmlFor={slugify(b.label, { lower: true, strict: true, locale: 'vi', replacement: '-' }) + '-' + i}>
+                  {b.label}
+                </label>
+              </div>
+            ))
+          }
+        </div>
       </Layout>
     </>
   );
