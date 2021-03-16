@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import {useRouter} from 'next/router'
+import React, { useState } from 'react';
+import { useRouter } from 'next/router'
 import { Form, FormGroup, Input } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -10,7 +10,7 @@ const preventDefault = f => e => {
   f(e)
 }
 
-const SearchForm = ({action = '/search-places'}) => {
+const SearchForm = ({ action = '/search-places' }) => {
   const router = useRouter()
   const [values, setValues] = useState({
     search: undefined,
@@ -30,7 +30,7 @@ const SearchForm = ({action = '/search-places'}) => {
   const searchSubmit = preventDefault(() => {
     router.push({
       pathname: action,
-      query: {q: search},
+      query: { s: search },
     })
   })
   const handleChange = e => {
@@ -39,12 +39,12 @@ const SearchForm = ({action = '/search-places'}) => {
   };
 
   return (
-    <Form onSubmit={searchSubmit}>
+    <Form onSubmit={searchSubmit} className="w-100">
       <FormGroup className="m-0 search-form">
         <div className="flex form-inner">
-          <div className="icon">
+          <span className="icon">
             <FontAwesomeIcon icon={faSearch} />
-          </div>
+          </span>
           <Input className="form-control text-capitalize search-text" name="search-text" placeholder="Nhập từ khóa" type="search" onChange={handleChange} />
           <div className="button-primary btn-submit">
             <button className=" btn btn-default text-white text-uppercase" type="submit">

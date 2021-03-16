@@ -7,7 +7,7 @@ import nextPaginationStyle from '../../assets/scss/custom/components/pagination/
 import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
-import { listPlacesByCategoryId } from '../../actions/places';
+import { listSearchPlaces } from '../../actions/places';
 // import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
 // import moment from 'moment';
 import Card from '../../components/places/Card';
@@ -17,11 +17,8 @@ const ScrollHeader = WithHeaderScroll(Header);
 
 
 const SearchPlaces = ({ data, total, query }) => {
-
-  const title = data.data.name ? data.data.name : ''
+  const title = query ? 'Kết quả tìm kiếm cho từ khóa '+ query.s : ''
   const description = data.data.description ? data.data.description : ''
-  // Paging
-  //const [total, setTotal] = useState(0);
   const sizePerPageList = [10, 15, 20];
   return (
     <>
@@ -55,10 +52,10 @@ const SearchPlaces = ({ data, total, query }) => {
 };
 
 SearchPlaces.getInitialProps = async ({ query }) => {
-  const slug = query.slug.replace(/-/g, "_");
+  const search = query.s.replace(/-/g, " ");
   const page = query.page !== undefined ? query.page : 1;
   //slugify(query.slug, {lower: true, locale: 'vi', replacement: '_'}).replace("-", "_");
-  return await listPlacesByCategoryId(slug, page).then(data => {
+  return await listSearchPlaces(search, page).then(data => {
     if (data.message) {
       console.log(data.message);
     } else {
