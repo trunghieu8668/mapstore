@@ -2,18 +2,24 @@ const path = require('path')
 const withImages = require('next-images')
 const withFonts = require('next-fonts');
 
- module.exports = withFonts({
-    enableSvg: true,
-    webpack(config, options) {
-      return config;
-    }
+module.exports = withFonts({
+  enableSvg: true,
+  webpack(config, options) {
+    return config;
   }
- ); 
+}
+);
 
 // https://github.com/twopluszero/next-images/blob/master/index.js
-module.exports = ({ dynamicAssetPrefix = false, ...nextConfig } = {}) => {
+module.exports = ({ dynamicAssetPrefix = false, nextConfig = {} } = {}) => {
   return Object.assign({}, nextConfig, {
-    publicRuntimeConfig: dynamicAssetPrefix 
+    // serverRuntimeConfig: {
+    //   APP_NAME: process.env.APP_NAME, 
+    // },
+    // publicRuntimeConfig: {
+    //   APP_NAME: process.env.APP_NAME
+    // },
+    publicRuntimeConfig: dynamicAssetPrefix
       ? Object.assign({}, nextConfig.publicRuntimeConfig, {
         nextImagesAssetPrefix: nextConfig.assetPrefix
       })
@@ -70,7 +76,7 @@ module.exports = ({ dynamicAssetPrefix = false, ...nextConfig } = {}) => {
 
 module.exports = {
   async rewrites() {
-    return [      
+    return [
       {
         source: '/about-us',
         destination: '/about',
@@ -99,7 +105,7 @@ module.exports = {
         source: '/loai-dia-diem/:slug',
         destination: '/category-group/:slug',
       },
-      
+
     ]
   },
 }

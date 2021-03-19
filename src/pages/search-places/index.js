@@ -8,7 +8,7 @@ import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
 import { listSearchPlaces } from '../../actions/places';
-// import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
 // import moment from 'moment';
 import Card from '../../components/places/Card';
 import ListByCity from '../../components/sidebar/listByCity'
