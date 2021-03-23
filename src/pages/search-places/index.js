@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 // import slugify from 'slugify'
 import Pagination from 'next-pagination'
 import nextPaginationStyle from '../../assets/scss/custom/components/pagination/theme.module.scss'

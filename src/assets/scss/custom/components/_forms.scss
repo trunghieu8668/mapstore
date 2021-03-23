@@ -59,14 +59,18 @@
       box-shadow: none
     }
   }
+
   .btn-submit {
     .icons {
       position: relative;
+      display: block;
+      height: 100%;
 
       .icon {
         position: absolute;
-        height: 23px;
-        width: 23px;
+        height: 100%;
+        width: 20px;
+        display: block;
         font-size: 15px;
         top: 50%;
         transform: translate(-50%, -50%);

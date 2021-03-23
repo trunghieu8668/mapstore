@@ -1,11 +1,11 @@
 import React from 'react';
 import {withRouter} from 'next/router';
-import {Container,Row,Col} from 'reactstrap'
+import {Container,Row,Col} from 'react-bootstrap'
 import { Button } from 'primereact/button';
 // Components
-import {Logo} from '../common'
-import SearchForm from '../form/SearchForm';
-import CategoryList from './CategoryList';
+// import {Logo} from '../common'
+// import SearchForm from '../form/SearchForm';
+// import CategoryList from './CategoryList';
 
 function BannerSection({router, title}) {
   const scrollToRef = () => {
@@ -13,7 +13,7 @@ function BannerSection({router, title}) {
   }
   return (
     <>
-      <div className="event-content w-100">
+      {/* <div className="event-content w-100">
           <Container>
               <Row>
                   <Col xl="8" md="10" className="offset-xl-2 offset-md-1">
@@ -26,7 +26,7 @@ function BannerSection({router, title}) {
                                 </div>
                                 <div className="center-content mt-4">
                                   <SearchForm />
-                                  {/* <CategoryList /> */}
+                                  <CategoryList />
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@ function BannerSection({router, title}) {
                   </Col>
               </Row>
           </Container>
-      </div>
+      </div> */}
 
       {router.pathname !== '/elements/count-down' ? 
       <div className="set-bottom set-abs">

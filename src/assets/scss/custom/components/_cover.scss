@@ -1,10 +1,12 @@
 .cover-intro {
-  display:block;
+  display: block;
   position: relative;
   padding: 0;
+
   .cover-intro-inner {
     min-height: 100vh;
   }
+
   &:before {
     content: "";
     background-image: linear-gradient(var(--white), var(--white));
@@ -13,29 +15,34 @@
     width: 100%;
     position: absolute;
   }
+
   .center-text {
     align-items: center;
     display: flex;
     position: relative;
     z-index: 2;
   }
-  .section-category {    
+
+  .section-category {
     margin-top: 30px;
-    .item-list {      
+
+    .item-list {
       .item-link {
         display: block;
         padding-top: 75%;
         text-align: center;
         position: relative;
         margin-bottom: 30px;
+
         .inner {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%,-50%);
+          transform: translate(-50%, -50%);
           width: 100%;
           padding-left: 5px;
           padding-right: 5px;
+
           .icon {
             display: inline-block;
             border: 2px solid #fff;
@@ -48,19 +55,23 @@
             text-align: center;
             position: relative;
             margin-bottom: 5px;
+
             .icon-src {
               display: block;
-              margin: 0 auto;              
+              margin: 0 auto;
             }
           }
+
           .name {
             font-size: 13.5px;
             color: #333;
             display: block;
           }
         }
-        &:hover {          
-          background:var(--color1);
+
+        &:hover {
+          background: var(--color1);
+
           .name {
             color: #fff;
           }

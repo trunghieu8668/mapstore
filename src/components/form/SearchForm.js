@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router'
-import { Form, FormGroup, Input } from 'reactstrap'
+import { Form, FormGroup, Input } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { listSearchPlaces } from '../../actions/places'

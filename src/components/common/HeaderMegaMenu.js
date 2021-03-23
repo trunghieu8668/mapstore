@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from './Nav'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import Logo from './Logo'
 
 const Header = () => {

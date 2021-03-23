@@ -4,7 +4,7 @@ import { Figure } from 'react-bootstrap'
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
 import { singlePlace, listRelated } from '../../actions/places';

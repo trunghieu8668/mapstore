@@ -4,14 +4,20 @@ import BannerSection from '../components/home/BannerSection'
 import Footer from '../components/common/Footer'
 import PlacesList from '../components/home/PlacesList'
 import { listPlacesByCategoryId } from '../actions/places';
-export function Home({data = {}}) {
+
+import WithHeaderScroll from "../common/WithHeaderScroll";
+const ScrollHeader = WithHeaderScroll(Header);
+
+export function Home({ data = {} }) {
   return (
     <Layout title="Mapstore - Tìm là thấy" description="Trang thông tin địa điểm" keywords="thông tin công ty" className="wrapper-site">
-      <section className="cover-intro" id="home">
+      <ScrollHeader isHome={false} />
+      <section className="clearfix">
         <div className="d-flex align-items-end flex-column">
-          <Header isHome={true} />
-          <BannerSection />
-          <PlacesList data={data}/>
+          {/* <Header isHome={true} /> */}
+
+          {/* <BannerSection /> */}
+          <PlacesList data={data} />
           <Footer />
         </div>
       </section>

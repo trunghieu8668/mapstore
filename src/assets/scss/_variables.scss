@@ -1,7 +1,7 @@
 $font-awesome: FontAwesome;
 
 :root {
-  --color1:#057FF4;
+  --color1: #057FF4;
   --color2: green;
   --color3: #F9C301;
   --color4: #E73F2B;
@@ -12,11 +12,11 @@ $font-awesome: FontAwesome;
   --warning: #f37021;
   --primary: #357fef;
   --secondary: #4e4e4e;
-  --bg-color1:#F4F5F8;
-  --dark: #4E56F3;  
+  --bg-color1: #F4F5F8;
+  --dark: #4E56F3;
 }
 
-
+$theme-deafult: var(--color1);
 //colors
 $white: #fff;
 $black: #000;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 // import slugify from 'slugify'
 import Pagination from 'next-pagination'
 import nextPaginationStyle from '../../assets/scss/custom/components/pagination/theme.module.scss'
@@ -8,10 +8,10 @@ import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
 import { listPlacesByCategoryId } from '../../actions/places';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
+// import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
 // import moment from 'moment';
 import Card from '../../components/places/Card';
-import ListByCity from '../../components/sidebar/listByCity'
+// import ListByCity from '../../components/sidebar/listByCity'
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
 
@@ -33,7 +33,7 @@ const Places = ({ data, total, query }) => {
               <Container>
                 <h1 className="h3 text-dark clearfix d-block ">{title}</h1>
                 <Row>
-                  <Col md={8} lg={9}>
+                  <Col md={8} lg={8} className="offset-lg-2">
                     {data.data.map((b, i) => (
                       <Card key={i} data={b} />
                     ))}
@@ -41,7 +41,7 @@ const Places = ({ data, total, query }) => {
                     {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
                   </Col>
                   <Col md={4} lg={3}>
-                    <ListByCity />
+                    {/* <ListByCity /> */}
                   </Col>
                 </Row>
               </Container>

@@ -4,7 +4,7 @@ import nextPaginationStyle from '../../assets/scss/custom/components/pagination/
 import _ from 'lodash'
 // Components
 import Card from '../places/Card';
-const PlacesList = ({ data = {} }) => {
+const PlacesListLatest = ({ data = {} }) => {
   const total = data.total ? data.total : 0;
   const sizePerPageList = [10, 15, 20];
   return (
@@ -32,4 +32,4 @@ const PlacesList = ({ data = {} }) => {
 };
 
 
-export default PlacesList;
+export default PlacesListLatest;

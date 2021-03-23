@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link'
 import Image from 'next/image'
 import {api} from '../../fakeapi/category'
-import {Container, Row, Col} from 'reactstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 import slugify from 'slugify'
 import _ from 'lodash'
 const categoryGroupUrl = process.env.CATEGORY_GROUP_URL ? process.env.CATEGORY_GROUP_URL : 'loai-dia-diem'

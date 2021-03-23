@@ -83,8 +83,8 @@ module.exports = {
       },
       // Path Matching - will match `/post/a` but not `/post/a/b`
       {
-        source: '/post/:slug',
-        destination: '/news/:slug',
+        source: '/thong-tin-cong-ty/:slug',
+        destination: '/about-us/:slug',
       },
       // Wildcard Path Matching - will match `/blog/a` and `/blog/a/b`
       {
