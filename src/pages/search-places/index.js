@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link';
+import _ from 'lodash';
 import { Container, Row, Col } from 'react-bootstrap';
 // import slugify from 'slugify'
 import Pagination from 'next-pagination'
@@ -7,19 +8,51 @@ import nextPaginationStyle from '../../assets/scss/custom/components/pagination/
 import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
-import { listSearchPlaces } from '../../actions/places';
+import { listSearchPlaces, listPlacesByCategoryId } from '../../actions/places';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
 // import moment from 'moment';
 import Card from '../../components/places/Card';
-import ListByCity from '../../components/sidebar/listByCity'
+import CardListNoPicture from '../../components/places/CardListNoPicture';
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
 
-
-const SearchPlaces = ({ data, total, query }) => {
-  const title = query ? 'Kết quả tìm kiếm cho từ khóa '+ query.s : ''
-  const description = data.data.description ? data.data.description : ''
+const ShowResult = ({ props = {} }) => {
+  const data = props.data.data;
+  const total = props.data.total;
   const sizePerPageList = [10, 15, 20];
+  return (
+    <>
+      {
+        _.map(data, (b, i) => (
+          <Card key={i} data={b} />
+        ))}
+      <div className="clearfix w-100 my-4"></div>
+      {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
+
+    </>
+  )
+}
+const ShowAsidePlaceLatest = ({ props = {} }) => {
+  const data = props.data.data.data;
+  return (
+    <>
+      <div className="aside-group bg-white">
+        <div className="pl-3 pr-3 pt-3">
+          <h5 className="aside-title">Địa điểm mới cập nhật</h5>
+        </div>
+        {
+          _.map(data, (e, i) => (
+            <CardListNoPicture data={e} key={i} />
+          ))
+        }
+      </div>
+    </>
+  )
+}
+const SearchPlaces = (props) => {
+  const title = props.query ? 'Kết quả tìm kiếm cho từ khóa ' + props.query.s : ''
+  const description = null
+  //props.item.data.data.description ? props.item.data.data.description : ''
   return (
     <>
       <Layout title={title} description={description} keywords="" className="wrapper-site">
@@ -30,15 +63,11 @@ const SearchPlaces = ({ data, total, query }) => {
               <Container>
                 <h1 className="h3 text-dark clearfix d-block ">{title}</h1>
                 <Row>
-                  <Col md={8} lg={9}>
-                    {data.data.map((b, i) => (
-                      <Card key={i} data={b} />
-                    ))}
-                    <div className="clearfix w-100 my-4"></div>
-                    {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
+                  <Col md={8} lg={8}>
+                    <ShowResult props={props.items} />
                   </Col>
-                  <Col md={4} lg={3}>
-                    <ListByCity />
+                  <Col md={4} lg={4}>
+                    <ShowAsidePlaceLatest props={props.placesListLatest} />
                   </Col>
                 </Row>
               </Container>
@@ -54,14 +83,25 @@ const SearchPlaces = ({ data, total, query }) => {
 SearchPlaces.getInitialProps = async ({ query }) => {
   const search = query.s.replace(/-/g, " ");
   const page = query.page !== undefined ? query.page : 1;
-  //slugify(query.slug, {lower: true, locale: 'vi', replacement: '_'}).replace("-", "_");
-  return await listSearchPlaces(search, page).then(data => {
-    if (data.message) {
-      console.log(data.message);
-    } else {
-      return { data: data.data, total: data.data.total, query };
-    }
-  });
+
+  const [items, placesListLatest] = await Promise.all([
+    listSearchPlaces(search, page).then(data => {
+      if (data.message) {
+        console.log(data.message);
+      } else {
+        return { data: data.data, total: data.data.total, query };
+      }
+    }),
+    listPlacesByCategoryId(0, 0).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        return { data };
+      }
+    })
+  ]);
+
+  return { items, placesListLatest, query };
 };
 
 export default SearchPlaces;
