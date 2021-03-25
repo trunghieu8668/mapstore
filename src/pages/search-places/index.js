@@ -85,7 +85,7 @@ SearchPlaces.getInitialProps = async ({ query }) => {
   const page = query.page !== undefined ? query.page : 1;
 
   const [items, placesListLatest] = await Promise.all([
-    listSearchPlaces(search, page).then(data => {
+    listSearchPlaces(search, (page - 1)).then(data => {
       if (data.message) {
         console.log(data.message);
       } else {

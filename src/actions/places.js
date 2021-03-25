@@ -15,7 +15,7 @@ export const listPlacesByCategoryId = async (slug, page) => {
     .catch(err => console.log(err));
 };
 export const listSearchPlaces = (slug, page) => {
-  return Fetch(`${API}/public/places?categoryId=0&search=${slug}&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=${page !== undefined ? page : 0}&pageSize=${PAGESIZE}`, {
+  return Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=${page !== undefined ? page : 0}&search=${slug}&pageSize=${PAGESIZE}`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`

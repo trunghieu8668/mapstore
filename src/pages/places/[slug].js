@@ -58,7 +58,7 @@ Places.getInitialProps = async ({ query }) => {
   const slug = query.slug.replace(/-/g, "_");
   const page = query.page !== undefined ? query.page : 1;
   //slugify(query.slug, {lower: true, locale: 'vi', replacement: '_'}).replace("-", "_");
-  return await listPlacesByCategoryId(slug, page).then(data => {
+  return await listPlacesByCategoryId(slug, (page-1)).then(data => {
     if (data.message) {
       console.log(data.message);
     } else {

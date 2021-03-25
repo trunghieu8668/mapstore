@@ -1,22 +1,25 @@
 export const MENUITEMS = [
+  // {
+  //   title: 'Địa điểm', megaMenu: true, megaMenuType: 'large', type: 'oneLink', children: [
+  //     {
+  //       title: 'Y tế', type: 'sub', children: [
+  //         { path: '/nhom-dia-diem/benh-vien', title: 'Bệnh viện', type: 'link', icon: 'alert' },
+  //         { path: '/nhom-dia-diem/trung-tam-y-te', title: 'Trung tâm y tế', type: 'link', icon: 'layout-accordion-merged' },
+  //         { path: '/nhom-dia-diem/phong-kham', title: 'Phòng khám', type: 'link', icon: 'layers' }
+  //       ]
+  //     },
+  //     {
+  //       title: 'Tài chính ngân hàng', type: 'sub', children: [
+  //         { path: '/nhom-dia-diem/ngan-hang-acb', title: 'Ngân hàng ACB', type: 'link', icon: 'list' },
+  //         { path: '/nhom-dia-diem/ngan-hang-vietcombank', title: 'Ngân hàng Vietcombank', type: 'link', icon: 'gallery' },
+  //         { path: '/nhom-dia-diem/ngan-hang-techcombank', title: 'Ngân hàng Techcombank', type: 'link', icon: 'money' },
+  //         { path: '/nhom-dia-diem/ngan-hang-bidv', title: 'Ngân hàng BIDV', type: 'link', icon: 'time' },
+  //         { path: '/nhom-dia-diem/ngan-hang-viettinbank', title: 'Ngân hàng ViettinBank', type: 'link', icon: 'alarm-clock' }]
+  //     }
+  //   ]
+  // },
   {
-    title: 'Địa điểm', megaMenu: true, megaMenuType: 'large', type: 'sub', children: [
-      {
-        title: 'Y tế', type: 'sub', children: [
-          { path: '/nhom-dia-diem/benh-vien', title: 'Bệnh viện', type: 'link', icon: 'alert' },
-          { path: '/nhom-dia-diem/trung-tam-y-te', title: 'Trung tâm y tế', type: 'link', icon: 'layout-accordion-merged' },
-          { path: '/nhom-dia-diem/phong-kham', title: 'Phòng khám', type: 'link', icon: 'layers' }
-        ]
-      },
-      {
-        title: 'Tài chính ngân hàng', type: 'sub', children: [
-          { path: '/nhom-dia-diem/ngan-hang-acb', title: 'Ngân hàng ACB', type: 'link', icon: 'list' },
-          { path: '/nhom-dia-diem/ngan-hang-vietcombank', title: 'Ngân hàng Vietcombank', type: 'link', icon: 'gallery' },
-          { path: '/nhom-dia-diem/ngan-hang-techcombank', title: 'Ngân hàng Techcombank', type: 'link', icon: 'money' },
-          { path: '/nhom-dia-diem/ngan-hang-bidv', title: 'Ngân hàng BIDV', type: 'link', icon: 'time' },
-          { path: '/nhom-dia-diem/ngan-hang-viettinbank', title: 'Ngân hàng ViettinBank', type: 'link', icon: 'alarm-clock' }]
-      }
-    ]
+    path: '/', title: 'Địa điểm', type: 'oneLink',
   },
   {
     path: '/', title: 'Cửa hàng', type: 'oneLink',
