@@ -1,4 +1,4 @@
-import Fetch from 'isomorphic-fetch';
+import Fetch from 'isomorphic-unfetch';
 import { gioiThieu } from '../fakeapi/info'
 
 export const singleBlog = slug => {

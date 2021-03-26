@@ -7,8 +7,13 @@ module.exports = withFonts({
   webpack(config, options) {
     return config;
   }
+});
+
+module.exports = {
+  images: {
+    domains: ['mapstore.vn'],
+  },
 }
-);
 
 // https://github.com/twopluszero/next-images/blob/master/index.js
 module.exports = ({ dynamicAssetPrefix = false, nextConfig = {} } = {}) => {
@@ -109,3 +114,4 @@ module.exports = {
     ]
   },
 }
+// SiteMap

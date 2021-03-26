@@ -11,14 +11,14 @@ const Layout = ({ title = "", description = "", keywords = "", className, childr
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-EMK0T436Q8');
+        gtag('config', 'G-THTEBYF205');
       `
     }
   }
   return (
     <React.Fragment>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
@@ -40,7 +40,7 @@ const Layout = ({ title = "", description = "", keywords = "", className, childr
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
         <React.Fragment>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMK0T436Q8"></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-THTEBYF205"></script>
           <script dangerouslySetInnerHTML={setGoogleTags()} />
         </React.Fragment>
       </Head>

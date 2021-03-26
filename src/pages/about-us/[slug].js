@@ -1,7 +1,4 @@
-import Head from 'next/head';
-import Link from 'next/link';
 import { ListGroup, Container, Row, Col } from 'react-bootstrap'
-import HtmlToReact from 'html-to-react'
 
 import Layout from '../../components/Layout'
 import Header from '../../components/common/Header'

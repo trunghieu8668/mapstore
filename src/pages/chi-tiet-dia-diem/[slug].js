@@ -4,6 +4,8 @@ import { Figure, Tabs, Tab, Container, Row, Col } from 'react-bootstrap'
 import Link from 'next/link';
 import _ from 'lodash'
 import slugify from 'slugify';
+import parse, { attributesToProps } from 'html-react-parser';
+
 // Library
 import { PLACES_URL } from '../../../config';
 import { singlePlace, listRelated, listPlacesByCategoryId } from '../../actions/places';
@@ -96,13 +98,18 @@ const ShowPlaceDetail = ({ props = {} }) => {
 
               </ul>
               <div className="d-block mt-5 mb-4">
-                <h3 className="h5">GIỚI THIỆU</h3>
+                <h3 className="h5 font-weight-medium">GIỚI THIỆU</h3>
                 <div className="clearfix"></div>
-                <article>
+                <div className="post-article">
                   {data.data.description ? (
-                    <Suspense dangerouslySetInnerHTML={{ __html: data.data.description }} />
-                  ) : <span className="text-muted text-italic">Nội dung đang cập nhật</span>}
-                </article>
+                    // <article dangerouslySetInnerHTML={{ __html: data.data.description }} />
+                    <article>
+                      {parse(data.data.description, {
+                        trim: true
+                      })}
+                    </article>
+                  ) : <article className="text-muted text-italic">Nội dung đang cập nhật</article>}
+                </div>
               </div>
             </Tab>
             <Tab tabClassName="tab-menu-link" eventKey="tab-2" title="Sản phẩm">
@@ -116,7 +123,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
   return (
     <div className="bg-white rounded-4 shadow p-4">
       {placeInfo()}
-      <div className="clearfix w-100 my-4"></div>
+      <div className="clearfix w-100 my-2"></div>
       {related && related.length > 0 && <h4 className="mt-5 d-block border-top pt-3">Địa điểm khác</h4>}
       {showRelated()}
     </div>

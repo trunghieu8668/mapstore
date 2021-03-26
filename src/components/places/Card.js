@@ -36,8 +36,16 @@ const Card = ({ data }) => {
               <a className="d-block h5 font-weight-medium item-name-link" title={places.name}>{places.name}</a>
             </Link>
           </h3>
-          <p className="item-address mb-1 text-gray"><address className="mb-0"><b>Địa chỉ:</b> {places.address}{places.ward && ', ' + places.ward}{places.district && ', ' + places.district}{places.city && ', ' + places.city}</address></p>
-          <p className="item-phone mb-1 text-gray"><b>Điện thoại: </b> {places.phones} </p>
+          <div className="item-address mb-1 text-gray">
+            <address className="mb-0">
+              <b>Địa chỉ:</b>
+              {places.address}{places.ward && ', ' + places.ward}{places.district && ', ' + places.district}{places.city && ', ' + places.city}
+            </address>
+          </div>
+          <div className="item-phone mb-1 text-gray">
+            <b>Điện thoại: </b>
+            {places.phones}
+          </div>
         </Col>
       </Row>
     </div>
