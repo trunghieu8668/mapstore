@@ -65,3 +65,17 @@ export const listRelated = (slug) => {
     })
     .catch(err => console.log(err));
 };
+// Sitemap
+export const listAll = async () => {
+  // return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=${(PAGESIZE !== undefined || PAGESIZE !== null) ? (PAGESIZE <= 300 ? PAGESIZE : 300) : 10}`, {
+  return await Fetch(`https://admin-api.mapstore.vn/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=300`, {
+    method: 'GET',
+    headers: {
+      "apikey": `${APIKEY}`
+    }
+  })
+    .then(response => {
+      return response.json()
+    })
+    .catch(err => console.log(err));
+};

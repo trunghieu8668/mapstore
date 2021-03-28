@@ -82,6 +82,11 @@ module.exports = ({ dynamicAssetPrefix = false, nextConfig = {} } = {}) => {
 module.exports = {
   async rewrites() {
     return [
+      // Sitemap
+      {
+        source: '/sitemap.xml',
+        destination: '/sitemap',
+      },
       {
         source: '/about-us',
         destination: '/about',

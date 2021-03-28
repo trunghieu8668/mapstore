@@ -23,7 +23,7 @@ const Card = ({ data }) => {
               <Link href={`/chi-tiet-dia-diem/${slugify(places.id, { lower: true })}`}>
                 <a className="d-block" title={places.name}>
                   <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
-                    <Image alt={data.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore_logo.png" />
+                    <Image alt={data.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore-logo-xs.png" />
                   </Figure>
                 </a>
               </Link>
