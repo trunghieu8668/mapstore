@@ -39,6 +39,7 @@ const Layout = ({ title = "", description = "", keywords = "", className, childr
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
+        <meta name="google-site-verification" content="I_l8BXUGaEFOFshCAMmOpcdtRoPFHZ2BGFz3sw0jaS0" />
         <React.Fragment>
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-THTEBYF205"></script>
           <script dangerouslySetInnerHTML={setGoogleTags()} />

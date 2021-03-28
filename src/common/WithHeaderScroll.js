@@ -13,7 +13,8 @@ export default function WithHeaderScroll(WrappedComponent) {
     }, []);
 
     useEffect(() => {
-      if (scroll >= headerRef.current.offsetHeight) {
+      // if (scroll >= headerRef.current.offsetHeight) {
+      if (scroll >= 150) {
         setIsHeaderFixed(true);
       } else {
         setIsHeaderFixed(false);

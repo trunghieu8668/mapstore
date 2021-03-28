@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
-const srcLogo = '/assets/images/logo/mapstore_logo.png'
+const srcLogo = '/assets/images/logo/mapstore-logo-xs.png'
 
 const Logo = ({title, className, children}) => {
   return (
