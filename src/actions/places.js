@@ -1,6 +1,5 @@
 import Fetch from 'isomorphic-unfetch';
 import { API, APIKEY, PAGESIZE } from '../../config';
-const token = "MQk1lSVNfFMmge8up5rzUZuMJwMraJvY"
 
 export const listPlacesByCategoryId = async (slug, page) => {
   return await Fetch(`${API}/public/places?categoryId=${slug}&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=${page !== undefined ? page : 0}&pageSize=${PAGESIZE}`, {
@@ -68,7 +67,7 @@ export const listRelated = (slug) => {
 // Sitemap
 export const listAll = async () => {
   // return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=${(PAGESIZE !== undefined || PAGESIZE !== null) ? (PAGESIZE <= 300 ? PAGESIZE : 300) : 10}`, {
-  return await Fetch(`https://admin-api.mapstore.vn/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=7000`, {
+  return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=7000`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`

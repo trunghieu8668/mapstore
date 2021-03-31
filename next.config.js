@@ -10,6 +10,12 @@ module.exports = withFonts({
 });
 
 module.exports = {
+  future: {
+    webpack5: true
+  }
+}
+
+module.exports = {
   images: {
     domains: ['mapstore.vn'],
   },

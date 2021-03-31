@@ -3,7 +3,7 @@ import { listAll } from '../actions/places'
 
 const toUrl = (host, route) =>
   `<url>
-    <loc>http://www.${host}${route}</loc>
+    <loc>${host}${route}</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>`;
@@ -23,6 +23,7 @@ const createSitemap = (
 const Sitemap = () => { };
 
 Sitemap.getInitialProps = async ({ res, req }) => {
+  const host = "https://mapstore.vn"
   // const routes = ["", "/about", "/products"];  
   const placesList = await listAll().then(data => {
     if (data.message) {
@@ -31,7 +32,8 @@ Sitemap.getInitialProps = async ({ res, req }) => {
       return data.data.data;
     }
   });
-  const sitemap = createSitemap(req.headers.host, placesList);
+  //const sitemap = createSitemap(req.headers.host, placesList);
+  const sitemap = createSitemap(host, placesList);
 
   res.setHeader("Content-Type", "text/xml");
   res.write(sitemap);
