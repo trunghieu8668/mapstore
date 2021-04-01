@@ -128,12 +128,12 @@ a {
 
 .font-size-2 {
   font-size: 11px;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .font-size-3 {
-  font-size: 13px;
-  line-height: 1.3;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .font-size-4 {
@@ -488,19 +488,25 @@ a {
   }
 }
 
-.header-scroll-wrapper {
-  position: relative;
-  z-index: 99;
 
-  &.fixed {
-    position: fixed;
-    animation: scrollDown 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+@media only screen and (min-width: 991px) {
 
-    #Header {
-      padding-top: 5px;
+  .header-scroll-wrapper {
+    position: relative;
+    z-index: 99;
+
+    &.fixed {
+      position: fixed;
+      animation: scrollDown 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+
+      #Header {
+        padding-top: 5px;
+      }
     }
   }
+
 }
+
 
 @keyframes scrollDown {
   from {

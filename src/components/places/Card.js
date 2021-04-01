@@ -11,19 +11,19 @@ const Card = ({ data }) => {
       <Row>
         <Col xs={3} lg={3}>
           {
-            data.logo && data.logo.length > 0 ? (
-              <Link href={`/chi-tiet-dia-diem/${slugify(places.id, { lower: true })}`}>
+            places.logo && places.logo.length > 0 ? (
+              <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
                 <a className="d-block" title={places.name}>
                   <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
-                    <Image alt={data.name} className="img-fluid f-select" width={900} height={600} layout='responsive' src={data.logo[0]} />
+                    <Image alt={places.name} className="img-fluid f-select" width={900} height={600} layout='responsive' src={places.logo[0]} />
                   </Figure>
                 </a>
               </Link>
             ) : (
-              <Link href={`/chi-tiet-dia-diem/${slugify(places.id, { lower: true })}`}>
+              <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
                 <a className="d-block" title={places.name}>
                   <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
-                    <Image alt={data.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore-logo-xs.png" />
+                    <Image alt={places.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore-logo-xs.png" />
                   </Figure>
                 </a>
               </Link>
@@ -32,7 +32,7 @@ const Card = ({ data }) => {
         </Col>
         <Col xs={9} lg={9}>
           <h3 className="item-name">
-            <Link href={`/chi-tiet-dia-diem/${slugify(places.id, { lower: true })}`}>
+            <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
               <a className="d-block h5 font-weight-medium item-name-link" title={places.name}>{places.name}</a>
             </Link>
           </h3>

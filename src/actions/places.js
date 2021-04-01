@@ -40,7 +40,7 @@ export const listAllGroupCategory = () => {
 
 
 export const singlePlace = slug => {
-  return Fetch(`${API}/public/places/${slug}`, {
+  return Fetch(`${API}/public/places/slug/${slug}`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`

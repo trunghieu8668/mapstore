@@ -81,18 +81,18 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4">
-                    <b>Điện thoại: </b> {data.data.phones && <a href={`tel:${data.data.phones}`}>{data.data.phones}</a>}
+                    <b>Điện thoại: </b> {data.data.phones && <a href={`tel:${data.data.phones}`} title={data.data.phones}>{data.data.phones}</a>}
                   </span>
                   <span>
-                    <b>Fax: </b> {data.data.faxNumber && <a href={`fax:${data.data.faxNumber}`}>{data.data.faxNumber}</a>}
+                    <b>Mã số thuế: </b> {data.data.taxCode && <span>{data.data.taxCode}</span>}
                   </span>
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4">
-                    <b>Website: </b> {data.data.website}
+                    <b>Website: </b> {data.data.website && <a target="_blank" rel="nofollow" href={`tel:${data.data.website}`} title={data.data.name}>{data.data.website}</a>}
                   </span>
                   <span>
-                    <b>Email: </b> <a href={`mailto:${data.data.email}`}>{data.data.email}</a>
+                    <b>Email: </b> <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email}</a>
                   </span>
                 </li>
 
@@ -103,12 +103,12 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 <div className="post-article">
                   {data.data.description ? (
                     // <article dangerouslySetInnerHTML={{ __html: data.data.description }} />
-                    <article>
-                      {parse(data.data.description, {
+                    <article className="text-justify font-size-3">
+                      {parse(data.data.description.replace(/\n/g, "<br/>"), {
                         trim: true
                       })}
                     </article>
-                  ) : <article className="text-muted text-italic">Nội dung đang cập nhật</article>}
+                  ) : <article className="text-muted text-italic font-size-3">Nội dung đang cập nhật</article>}
                 </div>
               </div>
             </Tab>
@@ -149,8 +149,8 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
 
 }
 const SinglePlaces = (props) => {
-  const title = props.itemDetail.data.data.name || null;
-  const description = props.itemDetail.data.data.description || null;
+  const title = props.itemDetail.data.data.webSEO.title || null;
+  const description = props.itemDetail.data.data.webSEO.description || null;
   return (
     <>
       <Layout title={title} description={description} keywords="" className="wrapper-site">
