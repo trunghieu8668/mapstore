@@ -14,7 +14,7 @@ import Card from '../../components/places/Card';
 // import ListByCity from '../../components/sidebar/listByCity'
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
-
+const PageSize = process.env.PAGESIZE
 
 const Places = ({ data, total, query }) => {
 
@@ -38,7 +38,7 @@ const Places = ({ data, total, query }) => {
                       <Card key={i} data={b} />
                     ))}
                     <div className="clearfix w-100 my-4"></div>
-                    {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
+                    {total > PageSize && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
                   </Col>
                   <Col md={4} lg={3}>
                     {/* <ListByCity /> */}

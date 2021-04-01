@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Link from 'next/link';
 import _ from 'lodash';
 import { Container, Row, Col } from 'react-bootstrap';
 // import slugify from 'slugify'
@@ -15,6 +14,7 @@ import Card from '../../components/places/Card';
 import CardListNoPicture from '../../components/places/CardListNoPicture';
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
+const PageSize = process.env.PAGESIZE
 
 const ShowResult = ({ props = {} }) => {
   const data = props.data.data;
@@ -27,7 +27,7 @@ const ShowResult = ({ props = {} }) => {
           <Card key={i} data={b} />
         ))}
       <div className="clearfix w-100 my-4"></div>
-      {total > 0 && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
+      {total > PageSize && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
 
     </>
   )
@@ -61,10 +61,19 @@ const SearchPlaces = (props) => {
             <ScrollHeader isHome={false} />
             <div className="wrapper-contain clearfix w-100 pt-4 pb-4 position-relative">
               <Container>
-                <h1 className="h3 text-dark clearfix d-block ">{title}</h1>
                 <Row>
                   <Col md={8} lg={8}>
-                    <ShowResult props={props.items} />
+                    <div className="content bg-white">
+                      <div className="meta-entity px-3 pt-3">
+                        <h1 className="h4 font-weight-light text-dark clearfix d-block ">
+                          Kết quả tìm kiếm cho từ khóa
+                  <b className="text-danger"> {props.query.s} </b>
+                        </h1>
+                        <label>Tìm thấy <b>{props.items.total}</b> kết quả</label>
+                      </div>
+                      <ShowResult props={props.items} />
+                    </div>
+
                   </Col>
                   <Col md={4} lg={4}>
                     <ShowAsidePlaceLatest props={props.placesListLatest} />

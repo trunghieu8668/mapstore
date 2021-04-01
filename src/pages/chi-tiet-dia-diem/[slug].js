@@ -89,7 +89,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4">
-                    <b>Website: </b> {data.data.website && <a target="_blank" rel="nofollow" href={`tel:${data.data.website}`} title={data.data.name}>{data.data.website}</a>}
+                    <b>Website: </b> {data.data.website && <a target="_blank" rel="nofollow" href={`${data.data.website}`} title={data.data.name}>{data.data.website}</a>}
                   </span>
                   <span>
                     <b>Email: </b> <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email}</a>
@@ -98,12 +98,12 @@ const ShowPlaceDetail = ({ props = {} }) => {
 
               </ul>
               <div className="d-block mt-5 mb-4">
-                <h3 className="h5 font-weight-medium">GIỚI THIỆU</h3>
+                <h3 className="h4 font-weight-medium">GIỚI THIỆU</h3>
                 <div className="clearfix"></div>
-                <div className="post-article">
+                <div className="post-article d-block mt-3">
                   {data.data.description ? (
                     // <article dangerouslySetInnerHTML={{ __html: data.data.description }} />
-                    <article className="text-justify font-size-3">
+                    <article className="text-justify font-size-4">
                       {parse(data.data.description.replace(/\n/g, "<br/>"), {
                         trim: true
                       })}

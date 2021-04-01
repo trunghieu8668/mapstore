@@ -15,7 +15,7 @@ const Card = ({ data }) => {
               <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
                 <a className="d-block" title={places.name}>
                   <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
-                    <Image alt={places.name} className="img-fluid f-select" width={900} height={600} layout='responsive' src={places.logo[0]} />
+                    <Image alt={places.name} className="img-fluid f-select" width={350} height={235} layout='responsive' src={places.logo[0]} />
                   </Figure>
                 </a>
               </Link>

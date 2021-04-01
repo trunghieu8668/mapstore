@@ -1,5 +1,5 @@
 // https://javascript.plainenglish.io/dynamic-sitemap-generation-in-next-js-7107ccdc6830
-import { listAll } from '../actions/places'
+import { sitemapGenerator } from '../actions/places'
 
 const toUrl = (host, route) =>
   `<url>
@@ -17,7 +17,7 @@ const createSitemap = (
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    ${placesList && placesList.length > 0 && placesList.map((place) => toUrl(host, `/chi-tiet-dia-diem/${place.id}`)).join("")}
+    ${placesList && placesList.length > 0 && placesList.map((place) => toUrl(host, `/chi-tiet-dia-diem/${place.webSEO.slug}`)).join("")}
     </urlset>`;
 
 const Sitemap = () => { };
@@ -25,7 +25,7 @@ const Sitemap = () => { };
 Sitemap.getInitialProps = async ({ res, req }) => {
   const host = "https://mapstore.vn"
   // const routes = ["", "/about", "/products"];  
-  const placesList = await listAll().then(data => {
+  const placesList = await sitemapGenerator().then(data => {
     if (data.message) {
       console.log(data.message);
     } else {
