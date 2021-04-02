@@ -23,7 +23,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
   const query = props.itemDetail.query;
   const id = query;
   // State 
-  const categoryId = data.data.categories ? slugify(data.data.categories, { lower: true, locale: 'vi', replacement: '_' }).replace(/-/g, "_") : 0;
+  const categoryId = data.data.categories && data.data.categories.length > 0 ? data.data.categories[0].id : 0
   const [related, setRelated] = useState([]);
   const [placesLatest, setPlacesLatest] = useState({});
   const loadRelated = () => {
@@ -51,11 +51,11 @@ const ShowPlaceDetail = ({ props = {} }) => {
               {
                 data.data.pictures && data.data.pictures.length > 0 ? (
                   <Figure className="position-relative w-100 d-block">
-                    <Image alt={data.data.name} className="logo-img" width={900} height={600} layout='responsive' src={data.data.pictures[0]} />
+                    <Image alt={data.data.name} className="logo-img" width={480} height={320} layout='responsive' src={data.data.pictures[0]} />
                   </Figure>
                 ) : (
                   <Figure className="position-relative w-100 d-block figure-haft">
-                    <Image alt={data.data.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore_logo.png" />
+                    <Image alt={data.data.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore-logo-xs.png" />
                   </Figure>
                 )
               }
@@ -66,9 +66,14 @@ const ShowPlaceDetail = ({ props = {} }) => {
               </h1>
               <div className="mb-0">
                 {
-                  <Link href={`/${PLACES_URL}/${slugify(data.data.categories, { lower: true, locale: 'vi', strict: true })}`}>
-                    <a className="h6 font-weight-normal" title={data.data.categories}>{data.data.categories}</a>
-                  </Link>
+                  data.data.categories && _.map(data.data.categories, (category, i) => (
+                    <h2 key={i}>
+                      <Link href={`/${PLACES_URL}/${category.id.replace(/_/g, "-")}`}>
+                        <a className="h6 font-weight-normal" title={category.name}>{category.name}</a>
+                      </Link>
+                    </h2>
+                  ))
+
                 }
               </div>
             </div>
