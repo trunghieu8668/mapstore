@@ -11,7 +11,8 @@ module.exports = withFonts({
 
 module.exports = {
   future: {
-    webpack5: true
+    webpack5: true,
+    strictPostcssConfiguration: true
   }
 }
 

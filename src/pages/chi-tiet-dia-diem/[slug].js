@@ -89,15 +89,15 @@ const ShowPlaceDetail = ({ props = {} }) => {
                     <b>Điện thoại: </b> {data.data.phones && <a href={`tel:${data.data.phones}`} title={data.data.phones}>{data.data.phones}</a>}
                   </span>
                   <span>
-                    <b>Mã số thuế: </b> {data.data.taxCode && <span>{data.data.taxCode}</span>}
+                    <b>Mã số thuế: </b> {data.data.taxCode ? <span>{data.data.taxCode}</span> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span>}
                   </span>
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4">
-                    <b>Website: </b> {data.data.website && <a target="_blank" rel="nofollow" href={`${data.data.website}`} title={data.data.name}>{data.data.website}</a>}
+                    <b>Website: </b> {data.data.website ? <a target="_blank" rel="nofollow" href={`${data.data.website}`} title={data.data.name}>{data.data.website}</a> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span>}
                   </span>
                   <span>
-                    <b>Email: </b> <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email}</a>
+                    <b>Email: </b> {data.data.email ? <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email} </a> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span> }
                   </span>
                 </li>
 
