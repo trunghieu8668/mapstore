@@ -47,7 +47,7 @@ const Layout = ({ title = "", description = "", keywords = "", className, childr
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>{title}</title>
-        <meta name="description" content={description.substring(0, 158)} />
+        <meta name="description" content={description ? description.substring(0, 158) : null} />
         <meta name="keywords" content={keywords} />
         <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png" />

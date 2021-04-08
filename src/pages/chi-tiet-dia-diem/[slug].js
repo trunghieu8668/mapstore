@@ -29,7 +29,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
   const loadRelated = () => {
     categoryId !== 0 && listRelated(categoryId).then(data => {
       setRelated(
-        data.data.data.filter(el => el.id !== id)
+        data.data.data.filter(el => el.webSEO.slug !== id.slug)
       )
     });
   };
@@ -126,7 +126,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
     )
   }
   return (
-    <div className="bg-white rounded-4 shadow p-4">
+    <div className="bg-white rounded-4 shadow p-md-4 p-lg-4 p-xl-4">
       {placeInfo()}
       <div className="clearfix w-100 my-2"></div>
       {related && related.length > 0 && <h4 className="mt-5 d-block border-top pt-3">Địa điểm khác</h4>}

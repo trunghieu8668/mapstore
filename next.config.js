@@ -10,17 +10,20 @@ module.exports = withFonts({
 });
 
 module.exports = {
+  compress: false,
+  images: {
+    domains: ['mapstore.vn'],
+  },
   future: {
     webpack5: true,
     strictPostcssConfiguration: true
   }
 }
 
-module.exports = {
-  images: {
-    domains: ['mapstore.vn'],
-  },
-}
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+module.exports = withBundleAnalyzer({})
 
 // https://github.com/twopluszero/next-images/blob/master/index.js
 module.exports = ({ dynamicAssetPrefix = false, nextConfig = {} } = {}) => {
@@ -89,11 +92,6 @@ module.exports = ({ dynamicAssetPrefix = false, nextConfig = {} } = {}) => {
 module.exports = {
   async rewrites() {
     return [
-      // Sitemap
-      {
-        source: '/sitemap.xml',
-        destination: '/sitemap',
-      },
       {
         source: '/about-us',
         destination: '/about',
