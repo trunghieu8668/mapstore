@@ -67,7 +67,7 @@ const SearchPlaces = (props) => {
                       <div className="meta-entity px-3 pt-3">
                         <h1 className="h4 font-weight-light text-dark clearfix d-block ">
                           Kết quả tìm kiếm cho từ khóa
-                  <b className="text-danger"> {props.query.s} </b>
+                          <b className="text-danger"> {props.query.s} </b>
                         </h1>
                         <label>Tìm thấy <b>{props.items.total}</b> kết quả</label>
                       </div>

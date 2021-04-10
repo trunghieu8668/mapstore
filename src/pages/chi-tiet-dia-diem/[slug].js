@@ -23,13 +23,13 @@ const ShowPlaceDetail = ({ props = {} }) => {
   const query = props.itemDetail.query;
   const id = query;
   // State 
-  const categoryId = data.data.categories ? slugify(data.data.categories, { lower: true, locale: 'vi', replacement: '_' }).replace(/-/g, "_") : 0;
+  const categoryId = data.data.categories && data.data.categories.length > 0 ? data.data.categories[0].id : 0
   const [related, setRelated] = useState([]);
   const [placesLatest, setPlacesLatest] = useState({});
   const loadRelated = () => {
     categoryId !== 0 && listRelated(categoryId).then(data => {
       setRelated(
-        data.data.data.filter(el => el.id !== id)
+        data.data.data.filter(el => el.webSEO.slug !== id.slug)
       )
     });
   };
@@ -51,11 +51,11 @@ const ShowPlaceDetail = ({ props = {} }) => {
               {
                 data.data.pictures && data.data.pictures.length > 0 ? (
                   <Figure className="position-relative w-100 d-block">
-                    <Image alt={data.data.name} className="logo-img" width={900} height={600} layout='responsive' src={data.data.pictures[0]} />
+                    <Image alt={data.data.name} className="logo-img" width={480} height={320} layout='responsive' src={data.data.pictures[0]} />
                   </Figure>
                 ) : (
                   <Figure className="position-relative w-100 d-block figure-haft">
-                    <Image alt={data.data.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore_logo.png" />
+                    <Image alt={data.data.name} priority={true} objectFit="cover" layout='fill' className="img-fluid f-select" src="/assets/images/logo/mapstore-logo-xs.png" />
                   </Figure>
                 )
               }
@@ -66,9 +66,14 @@ const ShowPlaceDetail = ({ props = {} }) => {
               </h1>
               <div className="mb-0">
                 {
-                  <Link href={`/${PLACES_URL}/${slugify(data.data.categories, { lower: true, locale: 'vi', strict: true })}`}>
-                    <a className="h6 font-weight-normal" title={data.data.categories}>{data.data.categories}</a>
-                  </Link>
+                  data.data.categories && _.map(data.data.categories, (category, i) => (
+                    <h2 key={i}>
+                      <Link href={`/${PLACES_URL}/${category.id.replace(/_/g, "-")}`}>
+                        <a className="h6 font-weight-normal" title={category.name}>{category.name}</a>
+                      </Link>
+                    </h2>
+                  ))
+
                 }
               </div>
             </div>
@@ -84,15 +89,15 @@ const ShowPlaceDetail = ({ props = {} }) => {
                     <b>Điện thoại: </b> {data.data.phones && <a href={`tel:${data.data.phones}`} title={data.data.phones}>{data.data.phones}</a>}
                   </span>
                   <span>
-                    <b>Mã số thuế: </b> {data.data.taxCode && <span>{data.data.taxCode}</span>}
+                    <b>Mã số thuế: </b> {data.data.taxCode ? <span>{data.data.taxCode}</span> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span>}
                   </span>
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4">
-                    <b>Website: </b> {data.data.website && <a target="_blank" rel="nofollow" href={`${data.data.website}`} title={data.data.name}>{data.data.website}</a>}
+                    <b>Website: </b> {data.data.website ? <a target="_blank" rel="nofollow" href={`${data.data.website}`} title={data.data.name}>{data.data.website}</a> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span>}
                   </span>
                   <span>
-                    <b>Email: </b> <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email}</a>
+                    <b>Email: </b> {data.data.email ? <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email} </a> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span> }
                   </span>
                 </li>
 
@@ -121,7 +126,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
     )
   }
   return (
-    <div className="bg-white rounded-4 shadow p-4">
+    <div className="bg-white rounded-4 shadow p-md-4 p-lg-4 p-xl-4">
       {placeInfo()}
       <div className="clearfix w-100 my-2"></div>
       {related && related.length > 0 && <h4 className="mt-5 d-block border-top pt-3">Địa điểm khác</h4>}

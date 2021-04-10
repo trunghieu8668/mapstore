@@ -40,7 +40,9 @@ export const listAllGroupCategory = () => {
 
 
 export const singlePlace = slug => {
-  return Fetch(`${API}/public/places/slug/${slug}`, {
+  const slugCheck = slug.toLowerCase().indexOf('-');
+  const slugNew = slugCheck && slugCheck > 0 ? `${API}/public/places/slug/${slug}` : `${API}/public/places/${slug}`
+  return Fetch(`${slugNew}`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`
@@ -67,7 +69,7 @@ export const listRelated = (slug) => {
 // Sitemap
 export const sitemapGenerator = async () => {
   // return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=${(PAGESIZE !== undefined || PAGESIZE !== null) ? (PAGESIZE <= 300 ? PAGESIZE : 300) : 10}`, {
-  return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=7000`, {
+  return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=9000`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`

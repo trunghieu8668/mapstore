@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import slugify from 'slugify'
 import { Row, Col, Figure } from 'react-bootstrap'
 import Image from 'next/image'
 
@@ -9,7 +8,7 @@ const Card = ({ data }) => {
   return (
     <div className="place-item mt-2 mb-4 bg-white rounded p-4 hover-shadow-3">
       <Row>
-        <Col xs={3} lg={3}>
+        <Col xs={12} lg={3}>
           {
             places.logo && places.logo.length > 0 ? (
               <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
@@ -30,7 +29,7 @@ const Card = ({ data }) => {
             )
           }
         </Col>
-        <Col xs={9} lg={9}>
+        <Col xs={12} lg={9}>
           <h3 className="item-name">
             <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
               <a className="d-block h5 font-weight-medium item-name-link" title={places.name}>{places.name}</a>
