@@ -97,7 +97,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                     <b>Website: </b> {data.data.website ? <a target="_blank" rel="nofollow" href={`${data.data.website}`} title={data.data.name}>{data.data.website}</a> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span>}
                   </span>
                   <span>
-                    <b>Email: </b> {data.data.email ? <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email} </a> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span> }
+                    <b>Email: </b> {data.data.email ? <a href={`mailto:${data.data.email}`} title={data.data.email}>{data.data.email} </a> : <span className="text-notfound text-muted text-italic">Đang cập nhật</span>}
                   </span>
                 </li>
 
@@ -126,7 +126,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
     )
   }
   return (
-    <div className="bg-white rounded-4 shadow p-md-4 p-lg-4 p-xl-4">
+    <div className="bg-white rounded-4 shadow w-100 p-md-4 p-lg-4 p-xl-4">
       {placeInfo()}
       <div className="clearfix w-100 my-2"></div>
       {related && related.length > 0 && <h4 className="mt-5 d-block border-top pt-3">Địa điểm khác</h4>}

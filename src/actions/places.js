@@ -2,7 +2,7 @@ import Fetch from 'isomorphic-unfetch';
 import { API, APIKEY, PAGESIZE } from '../../config';
 
 export const listPlacesByCategoryId = async (slug, page) => {
-  return await Fetch(`${API}/public/places?categoryId=${slug}&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=${page !== undefined ? page : 0}&pageSize=${PAGESIZE}`, {
+  return await Fetch(`${API}/public/places?categoryId=${slug}&cityId=0&districtId=0&pageIndex=${page !== undefined ? page : 0}&pageSize=${PAGESIZE}`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`
@@ -14,7 +14,7 @@ export const listPlacesByCategoryId = async (slug, page) => {
     .catch(err => console.log(err));
 };
 export const listSearchPlaces = (slug, page) => {
-  return Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=${page !== undefined ? page : 0}&search=${slug}&pageSize=${PAGESIZE}`, {
+  return Fetch(`${API}/public/places?categoryId=0&cityId=0&districtId=0&pageIndex=${page !== undefined ? page : 0}&search=${slug}&pageSize=${PAGESIZE}`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`
@@ -55,7 +55,7 @@ export const singlePlace = slug => {
 };
 
 export const listRelated = (slug) => {
-  return Fetch(`${API}/public/places?categoryId=${slug}&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=${PAGESIZE}`, {
+  return Fetch(`${API}/public/places?categoryId=${slug}&cityId=0&districtId=0&pageIndex=0&pageSize=${PAGESIZE}`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`
@@ -69,7 +69,7 @@ export const listRelated = (slug) => {
 // Sitemap
 export const sitemapGenerator = async () => {
   // return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=${(PAGESIZE !== undefined || PAGESIZE !== null) ? (PAGESIZE <= 300 ? PAGESIZE : 300) : 10}`, {
-  return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=9000`, {
+  return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=9500`, {
     method: 'GET',
     headers: {
       "apikey": `${APIKEY}`
