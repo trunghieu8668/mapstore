@@ -19,20 +19,30 @@ export const MENUITEMS = [
   //   ]
   // },
   {
-    path: '/', title: 'Địa điểm', type: 'oneLink',
+    path: "/",
+    title: "Địa điểm",
+    type: "oneLink",
   },
   {
-    path: '/', title: 'Cửa hàng', type: 'oneLink',
+    path: "/",
+    title: "Cửa hàng",
+    type: "oneLink",
   },
   {
-    path: '/', title: 'Sản phẩm', type: 'oneLink'
+    path: "/",
+    title: "Sản phẩm",
+    type: "oneLink",
   },
   {
-    path: '/blog', title: 'Blog', type: 'oneLink'
+    path: "/blog",
+    title: "Blog",
+    type: "oneLink",
   },
   {
-    path: '/thong-tin-cong-ty/lien-he.html', title: 'Liên hệ', type: 'oneLink'
-  }
+    path: "/thong-tin-cong-ty/lien-he.html",
+    title: "Liên hệ",
+    type: "oneLink",
+  },
   // {
   //   title: 'Cửa hàng', megaMenu: true, megaMenuType: 'small', type: 'sub', children: [
   //     {
@@ -61,5 +71,4 @@ export const MENUITEMS = [
   //     }
   //   ]
   // },
-
-]
+];

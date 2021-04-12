@@ -67,7 +67,7 @@
           letter-spacing: 0;
         }
 
-        >a {
+        > a {
           color: white;
 
           &:hover {
@@ -75,7 +75,7 @@
           }
         }
 
-        >ul {
+        > ul {
           display: none;
         }
 
@@ -84,7 +84,7 @@
             display: block;
           }
 
-          >ul {
+          > ul {
             display: block;
           }
         }
@@ -97,7 +97,7 @@
         }
       }
 
-      .sub-menu>a,
+      .sub-menu > a,
       .dropdown {
         &:before {
           position: absolute;
@@ -154,7 +154,7 @@
           &:hover,
           &:focus,
           &:active {
-            >a {
+            > a {
               color: $gray15;
               transform: translateX(2%);
             }

@@ -1,6 +1,13 @@
-import fetch from 'isomorphic-unfetch'
+import { API, APIKEY, PAGESIZE } from "../../config";
 
-export default async function (...args) {
-  const res = await fetch(...args)
-  return res.json()
+const fetcher = async (path) => {
+  const res = await fetch(`${API}${path}`, {
+    method: 'GET',
+    headers: {
+      apikey: `${APIKEY}`
+    },
+  })
+  return await res.json()
 }
+
+export default fetcher

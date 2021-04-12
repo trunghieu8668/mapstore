@@ -1,11 +1,11 @@
-import React from 'react'
-import Nav from './Nav'
-import { Container, Row, Col } from 'react-bootstrap'
-import Logo from './Logo'
+import React from "react";
+import Nav from "./Nav";
+import { Container, Row, Col } from "react-bootstrap";
+import Logo from "./Logo";
 
 const Header = () => {
   return (
-    <header className='loding-header nav-abs custom-scroll'>
+    <header className="loding-header nav-abs custom-scroll">
       <Container>
         <Row>
           <Col>
@@ -17,9 +17,9 @@ const Header = () => {
             </nav>
           </Col>
         </Row>
-      </Container>      
+      </Container>
     </header>
-  )
-}
+  );
+};
 
 export default Header;

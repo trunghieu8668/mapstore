@@ -1,17 +1,15 @@
-import { Container, Row, Col } from 'react-bootstrap';
-import Layout from '../../components/Layout'
-import Header from '../../components/common/Header'
-import Footer from '../../components/common/Footer'
-import { listAllGroupCategory } from '../../actions/places';
-import moment from 'moment';
-import Card from '../../components/places/Card';
-import ListByCity from '../../components/sidebar/listByCity'
+import { Container, Row, Col } from "react-bootstrap";
+import Layout from "../../components/Layout";
+import Header from "../../components/common/Header";
+import Footer from "../../components/common/Footer";
+import { listAllGroupCategory } from "../../actions/places";
+import moment from "moment";
+import Card from "../../components/places/Card";
+import ListByCity from "../../components/sidebar/listByCity";
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
 
-
 const CategoryGroup = ({ data }) => {
-
   // const title = data.data.name ? data.data.name : ''
   // const description = data.data.description ? data.data.description : ''
   return (
@@ -45,7 +43,7 @@ const CategoryGroup = ({ data }) => {
 };
 
 CategoryGroup.getInitialProps = async () => {
-  return await listAllGroupCategory().then(data => {
+  return await listAllGroupCategory().then((data) => {
     if (data.message) {
       console.log(data.message);
     } else {

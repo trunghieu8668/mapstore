@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-const convertBreadcrumb = string => {
+const convertBreadcrumb = (string) => {
   return string
-    .replace(/-/g, ' ')
-    .replace(/oe/g, 'ö')
-    .replace(/ae/g, 'ä')
-    .replace(/ue/g, 'ü')
+    .replace(/-/g, " ")
+    .replace(/oe/g, "ö")
+    .replace(/ae/g, "ä")
+    .replace(/ue/g, "ü");
 };
 
 export const Breadcrumbs = () => {
@@ -16,11 +16,14 @@ export const Breadcrumbs = () => {
 
   useEffect(() => {
     if (router) {
-      const linkPath = router.asPath.split('/');
+      const linkPath = router.asPath.split("/");
       linkPath.shift();
 
       const pathArray = linkPath.map((path, i) => {
-        return { breadcrumb: path, href: '/' + linkPath.slice(0, i + 1).join('/') };
+        return {
+          breadcrumb: path,
+          href: "/" + linkPath.slice(0, i + 1).join("/"),
+        };
       });
 
       setBreadcrumbs(pathArray);
@@ -41,9 +44,7 @@ export const Breadcrumbs = () => {
           return (
             <li key={breadcrumb.href} className="breadcrumb-item">
               <Link href={breadcrumb.href}>
-                <a>
-                  {convertBreadcrumb(breadcrumb.breadcrumb)}
-                </a>
+                <a>{convertBreadcrumb(breadcrumb.breadcrumb)}</a>
               </Link>
             </li>
           );
@@ -51,4 +52,4 @@ export const Breadcrumbs = () => {
       </ol>
     </nav>
   );
-}
+};

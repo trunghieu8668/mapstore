@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router'
-import { Form, FormGroup, Input } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { listSearchPlaces } from '../../actions/places'
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { Form, FormGroup, Input } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { listSearchPlaces } from "../../actions/places";
 
-const preventDefault = f => e => {
-  e.preventDefault()
-  f(e)
-}
+const preventDefault = (f) => (e) => {
+  e.preventDefault();
+  f(e);
+};
 
-const SearchForm = ({ action = '/search-places' }) => {
-  const router = useRouter()
+const SearchForm = ({ action = "/search-places" }) => {
+  const router = useRouter();
   const [values, setValues] = useState({
     search: undefined,
     results: [],
     searched: false,
-    message: ''
+    message: "",
   });
 
   const { search, results, searched, message } = values;
@@ -31,11 +31,16 @@ const SearchForm = ({ action = '/search-places' }) => {
     router.push({
       pathname: action,
       query: { s: search },
-    })
-  })
-  const handleChange = e => {
+    });
+  });
+  const handleChange = (e) => {
     // console.log(e.target.value);
-    setValues({ ...values, search: e.target.value, searched: false, results: [] });
+    setValues({
+      ...values,
+      search: e.target.value,
+      searched: false,
+      results: [],
+    });
   };
 
   return (
@@ -45,16 +50,25 @@ const SearchForm = ({ action = '/search-places' }) => {
           <span className="icon">
             <FontAwesomeIcon icon={faSearch} />
           </span>
-          <Input className="form-control text-capitalize search-text" name="search-text" placeholder="Nhập từ khóa" type="search" onChange={handleChange} />
+          <Input
+            className="form-control text-capitalize search-text"
+            name="search-text"
+            placeholder="Nhập từ khóa"
+            type="search"
+            onChange={handleChange}
+          />
           <div className="button-primary btn-submit">
-            <button className=" btn btn-default text-white text-uppercase" type="submit">
+            <button
+              className=" btn btn-default text-white text-uppercase"
+              type="submit"
+            >
               Tìm kiếm
             </button>
           </div>
         </div>
       </FormGroup>
     </Form>
-  )
-}
+  );
+};
 
 export default SearchForm;
