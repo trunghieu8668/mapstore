@@ -16,19 +16,14 @@ import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
 const PageSize = process.env.PAGESIZE
 
-const ShowResult = ({ props = {} }) => {
+const ShowResult = ({ props }) => {
   const data = props.data.data;
-  const total = props.data.total;
-  const sizePerPageList = [10, 15, 20];
   return (
     <>
       {
         _.map(data, (b, i) => (
           <Card key={i} data={b} />
         ))}
-      <div className="clearfix w-100 my-4"></div>
-      {total > PageSize && <Pagination total={total} sizes={sizePerPageList} theme={nextPaginationStyle} />}
-
     </>
   )
 }
@@ -51,6 +46,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
 }
 const SearchPlaces = (props) => {
   const title = props.query ? 'Kết quả tìm kiếm cho từ khóa ' + props.query.s : ''
+  const total = props.items.total
   const description = null
   //props.item.data.data.description ? props.item.data.data.description : ''
   return (
@@ -72,6 +68,8 @@ const SearchPlaces = (props) => {
                         <label>Tìm thấy <b>{props.items.total}</b> kết quả</label>
                       </div>
                       <ShowResult props={props.items} />
+                      <div className="clearfix w-100 my-4"></div>
+                      <Pagination total={total} sizes={[10, 15, 20]} theme={nextPaginationStyle} />
                     </div>
 
                   </Col>

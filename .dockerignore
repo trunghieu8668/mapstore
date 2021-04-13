@@ -1,8 +1,0 @@
-node_modules
-.dockerignore
-.gitignore
-.vscode
-docker-build-base-image.sh
-docker-build.sh
-BaseImage
-WebAppImage
