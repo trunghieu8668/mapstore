@@ -28,7 +28,9 @@ export default function WithHeaderScroll(WrappedComponent) {
     return (
       <div
         ref={headerRef}
-        className={`w-100 header-scroll-wrapper ${isHeaderFixed ? "fixed" : ""}`}
+        className={`w-100 header-scroll-wrapper ${
+          isHeaderFixed ? "fixed" : ""
+        }`}
       >
         <WrappedComponent {...props} />
       </div>

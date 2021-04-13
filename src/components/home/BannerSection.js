@@ -1,16 +1,16 @@
-import React from 'react';
-import {withRouter} from 'next/router';
-import {Container,Row,Col} from 'react-bootstrap'
-import { Button } from 'primereact/button';
+import React from "react";
+import { withRouter } from "next/router";
+import { Container, Row, Col } from "react-bootstrap";
+import { Button } from "primereact/button";
 // Components
 // import {Logo} from '../common'
 // import SearchForm from '../form/SearchForm';
 // import CategoryList from './CategoryList';
 
-function BannerSection({router, title}) {
+function BannerSection({ router, title }) {
   const scrollToRef = () => {
-    document.querySelector(`#${val}`).scrollIntoView({behavior: "smooth"})
-  }
+    document.querySelector(`#${val}`).scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
       {/* <div className="event-content w-100">
@@ -37,13 +37,22 @@ function BannerSection({router, title}) {
           </Container>
       </div> */}
 
-      {router.pathname !== '/elements/count-down' ? 
-      <div className="set-bottom set-abs">
-          <a className="center-content down" onClick={()=>scrollToRef('booking')} >
-              <img alt="" className="scroll-down" src="/assets/images/event/image-down.png" />
+      {router.pathname !== "/elements/count-down" ? (
+        <div className="set-bottom set-abs">
+          <a
+            className="center-content down"
+            onClick={() => scrollToRef("booking")}
+          >
+            <img
+              alt=""
+              className="scroll-down"
+              src="/assets/images/event/image-down.png"
+            />
           </a>
-      </div>
-      : ''}
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 }

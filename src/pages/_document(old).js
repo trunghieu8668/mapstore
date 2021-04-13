@@ -1,6 +1,6 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import getConfig from 'next/config';
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
 class MyDocument extends Document {
@@ -12,8 +12,8 @@ class MyDocument extends Document {
         gtag('js', new Date());
       
         gtag('config', 'G-EMK0T436Q8');
-      `
-    }
+      `,
+    };
   }
 
   render() {
@@ -22,7 +22,10 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="UTF-8" />
           <React.Fragment>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMK0T436Q8"></script>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-EMK0T436Q8"
+            ></script>
             <script dangerouslySetInnerHTML={this.setGoogleTags()} />
           </React.Fragment>
         </Head>
