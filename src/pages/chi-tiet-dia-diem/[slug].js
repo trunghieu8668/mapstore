@@ -20,6 +20,7 @@ import Footer from "../../components/common/Footer";
 import Card from "../../components/places/Card";
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 import CardListNoPicture from "../../components/places/CardListNoPicture";
+import Share from "../../components/common/Share";
 const ScrollHeader = WithHeaderScroll(Header);
 
 const ShowPlaceDetail = ({ props = {} }) => {
@@ -118,7 +119,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                   </address>
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
-                  <span className="d-md-inline mr-md-4">
+                  <span className="d-md-inline mr-md-4 mr-2">
                     <b>Điện thoại: </b>{" "}
                     {data.data.phones && (
                       <a
@@ -141,7 +142,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                   </span>
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
-                  <span className="d-md-inline mr-md-4">
+                  <span className="d-md-inline mr-md-4 mr-2">
                     <b>Website: </b>{" "}
                     {data.data.website ? (
                       <a
@@ -206,6 +207,8 @@ const ShowPlaceDetail = ({ props = {} }) => {
     <div className="bg-white rounded-4 shadow w-100 p-md-4 p-lg-4 p-xl-4">
       {placeInfo()}
       <div className="clearfix w-100 my-2"></div>
+      <Share />
+      <div className="clearfix w-100 my-1"></div>
       {related && related.length > 0 && (
         <h4 className="mt-5 d-block border-top pt-3">Địa điểm khác</h4>
       )}

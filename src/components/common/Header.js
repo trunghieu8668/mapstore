@@ -39,20 +39,23 @@ const Header = ({ isHome }) => {
           id="Header"
           className="px-md-4 position-relative bg-white shadow-sm border-bottom container-fluid"
         >
-          <div className="container d-flex flex-column flex-md-row align-items-center">
-            <div className="my-0 header-logo">
-              <Logo />
-            </div>
-            <div className="my-0 mr-md-auto flex-grow-1 col-lg-auto">
-              <SearchBar />
-            </div>
-            <div className="my-0 mr-md-auto flex-grow-1 h-100 d-flex">
-              <div className="header-mega-menu loding-header custom-scroll">
-                <nav className="nav float-right">
-                  <Nav />
-                </nav>
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="my-0 col-3 col-md-auto header-logo">
+                <Logo />
+              </div>
+              <div className="my-0 col-9 col-md-auto mr-md-auto flex-grow-1">
+                <SearchBar />
+              </div>
+              <div className="my-0 mr-md-auto flex-grow-1 h-100 d-none d-md-flex">
+                <div className="header-mega-menu loding-header custom-scroll">
+                  <nav className="nav float-right">
+                    <Nav />
+                  </nav>
+                </div>
               </div>
             </div>
+
           </div>
         </header>
       )}
