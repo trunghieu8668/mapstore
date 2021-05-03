@@ -48,6 +48,7 @@ const Layout = ({
       </div>`,
     };
   };
+  
   return (
     <React.Fragment>
       <Head>
@@ -149,6 +150,7 @@ const Layout = ({
       <main className={className}>{children}</main>
       <React.Fragment>
         <div dangerouslySetInnerHTML={setFacebookMessage()} />
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52de2cc053cee228" async="async"></script>
       </React.Fragment>
     </React.Fragment>
   );
