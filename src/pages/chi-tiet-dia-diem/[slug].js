@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Figure, Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 import _ from "lodash";
-import slugify from "slugify";
+import { useRouter } from 'next/router'
 import parse, { attributesToProps } from "html-react-parser";
 
 // Library
@@ -24,6 +24,8 @@ import Share from "../../components/common/Share";
 const ScrollHeader = WithHeaderScroll(Header);
 
 const ShowPlaceDetail = ({ props = {} }) => {
+  const router = useRouter()
+  const post = [router]
   const data = props.itemDetail.data || {};
   const query = props.itemDetail.query;
   const id = query;
@@ -204,7 +206,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
     );
   };
   return (
-    <div className="bg-white rounded-4 shadow p-md-4 p-lg-4 p-xl-4 w-100">
+    <div className="bg-white rounded-4 shadow w-100 p-md-4 p-lg-4 p-xl-4">
       {placeInfo()}
       <div className="clearfix w-100 my-2"></div>
       <Share />

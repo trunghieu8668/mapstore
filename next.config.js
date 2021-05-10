@@ -10,6 +10,9 @@ module.exports = withFonts({
 });
 
 module.exports = {
+  poweredByHeader: false,
+  generateEtags: false,
+  trailingSlash: true,
   compress: false,
   images: {
     domains: ['mapstore.vn'],
@@ -105,6 +108,11 @@ module.exports = {
       {
         source: '/blog/:slug*',
         destination: '/news/:slug*',
+      },
+      // chi tiết địa điểm
+      {
+        source: '/dia-diem/:slug',
+        destination: '/chi-tiet-dia-diem/:slug',
       },
       // nhóm địa điểm
       {

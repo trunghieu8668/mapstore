@@ -1,16 +1,3 @@
-import React, { useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
-// import slugify from 'slugify'
-import Pagination from 'next-pagination'
-import nextPaginationStyle from '../../assets/scss/custom/components/pagination/theme.module.scss'
-import Layout from '../../components/Layout'
-import Header from '../../components/common/Header'
-import Footer from '../../components/common/Footer'
-import { listPlacesByCategoryId } from '../../actions/places';
-// import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
-// import moment from 'moment';
-import Card from '../../components/places/Card';
-// import ListByCity from '../../components/sidebar/listByCity'
 import React from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";

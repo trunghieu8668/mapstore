@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { Row, Col, Figure } from "react-bootstrap";
 import Image from "next/image";
-
+import { removeFirstCharacter } from '../../helpers/Util'
 const Card = ({ data }) => {
+  
   const places = { ...data };
-
+  
   return (
     <div className="place-item mt-2 mb-4 bg-white rounded p-4 hover-shadow-3">
       <Row>
         <Col xs={12} lg={3}>
           {places.logo && places.logo.length > 0 ? (
-            <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
+            <Link href={`/dia-diem/${places.webSEO.fullSlug}`}>
               <a className="d-block" title={places.name}>
                 <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
                   <Image
@@ -25,7 +26,7 @@ const Card = ({ data }) => {
               </a>
             </Link>
           ) : (
-            <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
+            <Link href={`/dia-diem/${places.webSEO.fullSlug}`}>
               <a className="d-block" title={places.name}>
                 <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
                   <Image
@@ -43,7 +44,7 @@ const Card = ({ data }) => {
         </Col>
         <Col xs={12} lg={9}>
           <h3 className="item-name">
-            <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
+            <Link href={`/dia-diem/${places.webSEO.fullSlug}`}>
               <a
                 className="d-block h5 font-weight-medium item-name-link"
                 title={places.name}

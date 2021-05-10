@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Row, Col, Figure } from "react-bootstrap";
-import slugify from "slugify";
 
 const CardListNoPicture = ({ data }) => {
   const places = { ...data };
@@ -10,7 +9,7 @@ const CardListNoPicture = ({ data }) => {
       <Row>
         <Col xs={12} lg={12}>
           <h3 className="item-name">
-            <Link href={`/chi-tiet-dia-diem/${places.webSEO.slug}`}>
+            <Link href={`/${places.webSEO.slug}`}>
               <a
                 className="d-block font-size-4 font-weight-medium item-name-link"
                 title={places.name}

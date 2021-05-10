@@ -24,7 +24,7 @@ const PageNotFound = () => {
                     Available. This May Be Because The Page Does Not Exist Or
                     Has Been Moved.
                   </p>
-                  <Link href="/layouts/app1">
+                  <Link href="/">
                     <a className="btn btn-default m-t-20">back to home</a>
                   </Link>
                 </div>
