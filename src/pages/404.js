@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
+import Layout from "../components/Layout";
+
 const PageNotFound = () => {
   useEffect(() => {
     document.body.style.setProperty("--primary", "#000000");
@@ -10,63 +12,32 @@ const PageNotFound = () => {
   });
 
   return (
-    <div className="bg-purple">
-      <div className="section-404">
-        <div className="stars">
-          <Container>
-            <Row>
-              <Col lg="8" xs="12" className="offset-lg-2">
-                <div className="central-body">
-                  <h1 className="text-inner">404</h1>
-                  <h3 className="sub-text text-white">page not found</h3>
-                  <p className="text-404 text-white text-center">
-                    The Page You Are Attempting To Reach Is Currently Not
-                    Available. This May Be Because The Page Does Not Exist Or
-                    Has Been Moved.
-                  </p>
-                  <Link href="/">
-                    <a className="btn btn-default m-t-20">back to home</a>
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-        <div className="objects">
-          <img
-            alt="object_rocket"
-            className="object_rocket"
-            src="/assets/images/404/rocket.svg"
-          />
-          <div className="earth-moon">
-            <img
-              alt="object_earth"
-              className="object_earth"
-              src="/assets/images/404/earth.svg"
-            />
-            <img
-              alt="object_moon"
-              className="object_moon"
-              src="/assets/images/404/moon.svg"
-            />
+    <Layout
+      title="Mapstore - Tìm là thấy"
+      description="Trang thông tin địa điểm"
+      keywords="thông tin công ty"
+      className="wrapper-site site-transparent"
+    >      
+      <div className="bg-purple">
+        <div className="section-404">
+          <div className="stars">
+            <Container>
+              <Row>
+                <Col lg="8" xs="12" className="offset-lg-2">
+                  <div className="central-body">
+                    <h1 className="text-inner">404</h1>
+                    <h3 className="sub-text text-white">Không tìm thấy trang</h3>
+                    <Link href="/">
+                      <a className="btn btn-outline m-t-20 text-white border mt-3">Quay lại trang chủ</a>
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
           </div>
-          <div className="box_astronaut">
-            <img
-              alt="object_astronaut"
-              className="object_astronaut"
-              src="/assets/images/404/astronaut.svg"
-            />
-          </div>
-        </div>
-        <div className="glowing_stars">
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

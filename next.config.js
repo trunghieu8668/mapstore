@@ -111,8 +111,8 @@ module.exports = {
       },
       // chi tiết địa điểm
       {
-        source: '/dia-diem/:slug',
-        destination: '/chi-tiet-dia-diem/:slug',
+        source: '/dia-diem/:slug*',
+        destination: '/chi-tiet-dia-diem/:slug*',
       },
       // nhóm địa điểm
       {

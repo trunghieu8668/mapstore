@@ -25,7 +25,9 @@ const ScrollHeader = WithHeaderScroll(Header);
 
 const ShowPlaceDetail = ({ props = {} }) => {
   const router = useRouter()
-  const post = [router]
+  const slug = router.query.slug || []
+  console.log(slug)
+  // const post = [router]
   const data = props.itemDetail.data || {};
   const query = props.itemDetail.query;
   const id = query;
@@ -269,6 +271,7 @@ const SinglePlaces = (props) => {
 };
 
 SinglePlaces.getInitialProps = async ({ query }) => {
+  console.log(query)
   const [itemDetail, placesListLatest] = await Promise.all([
     singlePlace(query.slug).then((data) => {
       if (data.error) {

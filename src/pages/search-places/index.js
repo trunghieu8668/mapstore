@@ -54,9 +54,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
   );
 };
 const SearchPlaces = (props) => {
-  const title = props.query ? 'Kết quả tìm kiếm cho từ khóa ' + props.query.s : ''
   const total = props.items.total
-  const description = null
   const title = props.query
     ? "Kết quả tìm kiếm cho từ khóa " + props.query.s
     : "";

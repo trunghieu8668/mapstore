@@ -596,3 +596,105 @@ a {
     line-height: 1;
   }
 }
+
+// 404 page
+
+.section-404 {
+  background-color: var(--color1);
+  .btn-default {
+    &:hover {
+      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .text-404 {
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 10px 50px;
+    font-weight: 300;
+  }
+  .central-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  .sub-text {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  .objects img {
+    z-index: 90;
+    pointer-events: none;
+  }
+
+  .object_rocket {
+    z-index: 95;
+    position: absolute;
+    transform: translateX(-50px);
+    top: 75%;
+    left: 0;
+    pointer-events: none;
+    width: 150px;
+    animation: rocket-movement 20s linear infinite both running;
+  }
+
+  .object_earth {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    z-index: 90;
+    width: 100px;
+  }
+
+  .object_moon {
+    position: absolute;
+    top: 12%;
+    left: 25%;
+    width: 80px;
+  }
+
+  .object_astronaut {
+    width: 170px;
+    animation: rotate-astronaut 200s infinite linear both alternate;
+  }
+
+  .box_astronaut {
+    z-index: 110 !important;
+    position: absolute;
+    top: 60%;
+    right: 16%;
+    will-change: transform;
+    animation: move-astronaut 5s infinite linear both alternate;
+  }
+
+  .image-404 {
+    position: relative;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+ 
+
+  .text-inner {
+    font-size: calc(100px + (250 - 100) * ((100vw - 300px) / (1920 - 300)));
+    font-weight: 700;
+    margin-top: -62px;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .glowing_stars .star {
+    position: absolute;
+    border-radius: 100%;
+    background-color: $white;
+    width: 3px;
+    height: 3px;
+    opacity: 0.3;
+    will-change: opacity;
+  }
+
+  
+
+}
