@@ -22,13 +22,11 @@
 //   }
 // }();
 
-
 export const removeFirstCharacter = (txt, character) => {
   let s = "";
-  while(txt.charAt(0) === character)
-  {
-   s = s.substring(1);
+  while (txt.charAt(0) === character) {
+    s = s.substring(1);
   }
-  
-  return s !== undefined ? s : txt
-}
+
+  return s !== undefined ? s : txt;
+};

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Figure, Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 import _ from "lodash";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import parse, { attributesToProps } from "html-react-parser";
 
 // Library
@@ -24,9 +24,9 @@ import Share from "../../components/common/Share";
 const ScrollHeader = WithHeaderScroll(Header);
 
 const ShowPlaceDetail = ({ props = {} }) => {
-  const router = useRouter()
-  const slug = router.query.slug || []
-  console.log(slug)
+  const router = useRouter();
+  const slug = router.query.slug || [];
+  console.log(slug);
   // const post = [router]
   const data = props.itemDetail.data || {};
   const query = props.itemDetail.query;
@@ -271,7 +271,7 @@ const SinglePlaces = (props) => {
 };
 
 SinglePlaces.getInitialProps = async ({ query }) => {
-  console.log(query)
+  console.log(query);
   const [itemDetail, placesListLatest] = await Promise.all([
     singlePlace(query.slug).then((data) => {
       if (data.error) {

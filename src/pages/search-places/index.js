@@ -20,10 +20,9 @@ const ShowResult = ({ props }) => {
   const data = props.data.data;
   return (
     <>
-      {
-        _.map(data, (b, i) => (
-          <Card key={i} data={b} />
-        ))}
+      {_.map(data, (b, i) => (
+        <Card key={i} data={b} />
+      ))}
       {_.map(data, (b, i) => (
         <Card key={i} data={b} />
       ))}
@@ -54,7 +53,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
   );
 };
 const SearchPlaces = (props) => {
-  const total = props.items.total
+  const total = props.items.total;
   const title = props.query
     ? "Kết quả tìm kiếm cho từ khóa " + props.query.s
     : "";
@@ -87,7 +86,11 @@ const SearchPlaces = (props) => {
                       </div>
                       <ShowResult props={props.items} />
                       <div className="clearfix w-100 my-4"></div>
-                      <Pagination total={total} sizes={[10, 15, 20]} theme={nextPaginationStyle} />
+                      <Pagination
+                        total={total}
+                        sizes={[10, 15, 20]}
+                        theme={nextPaginationStyle}
+                      />
                     </div>
                   </Col>
                   <Col md={4} lg={4}>

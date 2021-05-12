@@ -55,7 +55,6 @@ const Header = ({ isHome }) => {
                 </div>
               </div>
             </div>
-
           </div>
         </header>
       )}

@@ -17,7 +17,7 @@ const PageNotFound = () => {
       description="Trang thông tin địa điểm"
       keywords="thông tin công ty"
       className="wrapper-site site-transparent"
-    >      
+    >
       <div className="bg-purple">
         <div className="section-404">
           <div className="stars">
@@ -26,9 +26,13 @@ const PageNotFound = () => {
                 <Col lg="8" xs="12" className="offset-lg-2">
                   <div className="central-body">
                     <h1 className="text-inner">404</h1>
-                    <h3 className="sub-text text-white">Không tìm thấy trang</h3>
+                    <h3 className="sub-text text-white">
+                      Không tìm thấy trang
+                    </h3>
                     <Link href="/">
-                      <a className="btn btn-outline m-t-20 text-white border mt-3">Quay lại trang chủ</a>
+                      <a className="btn btn-outline m-t-20 text-white border mt-3">
+                        Quay lại trang chủ
+                      </a>
                     </Link>
                   </div>
                 </Col>

@@ -675,8 +675,6 @@ a {
     pointer-events: none;
   }
 
- 
-
   .text-inner {
     font-size: calc(100px + (250 - 100) * ((100vw - 300px) / (1920 - 300)));
     font-weight: 700;
@@ -694,7 +692,4 @@ a {
     opacity: 0.3;
     will-change: opacity;
   }
-
-  
-
 }

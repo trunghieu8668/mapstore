@@ -1,17 +1,26 @@
 import Link from "next/link";
 import { Row, Col, Figure } from "react-bootstrap";
 import Image from "next/image";
-import { removeFirstCharacter } from '../../helpers/Util'
+import { removeFirstCharacter } from "../../helpers/Util";
+import { useRouter } from "next/router";
+
 const Card = ({ data }) => {
-  
+  const router = useRouter();
   const places = { ...data };
-  
+
   return (
     <div className="place-item mt-2 mb-4 bg-white rounded p-4 hover-shadow-3">
       <Row>
         <Col xs={12} lg={3}>
           {places.logo && places.logo.length > 0 ? (
-            <Link href={`/dia-diem/${places.webSEO.fullSlug}`}>
+            <Link
+              onClick={() => {
+                router.push({
+                  pathname: "/dia-diem/[fullSlug]",
+                  query: { fullSlug: places.webSEO.fullSlug },
+                });
+              }}
+            >
               <a className="d-block" title={places.name}>
                 <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
                   <Image
