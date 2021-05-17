@@ -118,6 +118,9 @@ a {
     min-width: inherit !important;
     width: auto !important;
     height: auto !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    min-height: auto !important;
   }
 }
 

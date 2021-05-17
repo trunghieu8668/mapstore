@@ -26,7 +26,6 @@ const ScrollHeader = WithHeaderScroll(Header);
 const ShowPlaceDetail = ({ props = {} }) => {
   const router = useRouter();
   const slug = router.query.slug || [];
-  console.log(slug);
   // const post = [router]
   const data = props.itemDetail.data || {};
   const query = props.itemDetail.query;
@@ -61,10 +60,10 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 <Figure className="position-relative w-100 d-block">
                   <Image
                     alt={data.data.name}
-                    className="logo-img"
-                    width={480}
-                    height={320}
-                    layout="responsive"
+                    priority={true}
+                    objectFit="contain"
+                    layout="fill"
+                    className="logo-img img-fluid f-select"
                     src={data.data.pictures[0]}
                   />
                 </Figure>
@@ -73,10 +72,10 @@ const ShowPlaceDetail = ({ props = {} }) => {
                   <Image
                     alt={data.data.name}
                     priority={true}
-                    objectFit="cover"
+                    objectFit="contain"
                     layout="fill"
                     className="img-fluid f-select"
-                    src="/assets/images/logo/mapstore-logo-xs.png"
+                    src="/assets/images/logo/mapstore-logo-min.png"
                   />
                 </Figure>
               )}
@@ -116,7 +115,8 @@ const ShowPlaceDetail = ({ props = {} }) => {
               <ul className="list-unstyled">
                 <li className="item h6 font-weight-normal mb-3">
                   <address className="mb-0">
-                    <b>Địa chỉ:</b> {data.data.address}
+                    <b><i className="flaticon-pin icon"></i></b> 
+                    {data.data.address}
                     {data.data.ward && ", " + data.data.ward}
                     {data.data.district && ", " + data.data.district}
                     {data.data.city && ", " + data.data.city}
@@ -124,7 +124,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4 mr-2">
-                    <b>Điện thoại: </b>{" "}
+                    <b><i className="flaticon-whatsapp"></i> </b>{" "}
                     {data.data.phones && (
                       <a
                         href={`tel:${data.data.phones}`}
@@ -214,7 +214,9 @@ const ShowPlaceDetail = ({ props = {} }) => {
       <Share />
       <div className="clearfix w-100 my-1"></div>
       {related && related.length > 0 && (
-        <h4 className="mt-5 d-block border-top pt-3">Địa điểm khác</h4>
+        <div className="mt-5 d-block border-top pt-3">
+          <h2 className="h5">{data.data.categories[0].name} - {data.data.ward}, {data.data.district}, {data.data.city}</h2>
+        </div>
       )}
       {showRelated()}
     </div>
@@ -271,9 +273,13 @@ const SinglePlaces = (props) => {
 };
 
 SinglePlaces.getInitialProps = async ({ query }) => {
-  console.log(query);
+  const slug = query.slug;
+  const citySlug = slug[0].replace('/', '');
+  const districtSlug = slug[1].replace('/', '');
+  const wardSlug = slug[2].replace('/', '');
+  const nameSlug = slug[3].replace('/', '');
   const [itemDetail, placesListLatest] = await Promise.all([
-    singlePlace(query.slug).then((data) => {
+    singlePlace(nameSlug).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {

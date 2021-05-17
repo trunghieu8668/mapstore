@@ -16,8 +16,8 @@ const Card = ({ data }) => {
             <Link
               onClick={() => {
                 router.push({
-                  pathname: "/dia-diem/[fullSlug]",
-                  query: { fullSlug: places.webSEO.fullSlug },
+                  pathname: "/dia-diem[fullSlug]",
+                  query: { fullSlug: places.webSEO.fullSlug }
                 });
               }}
             >
@@ -26,25 +26,25 @@ const Card = ({ data }) => {
                   <Image
                     alt={places.name}
                     className="img-fluid f-select"
-                    width={350}
-                    height={235}
-                    layout="responsive"
+                    priority={true}
+                    objectFit="contain"
+                    layout="fill"
                     src={places.logo[0]}
                   />
                 </Figure>
               </a>
             </Link>
           ) : (
-            <Link href={`/dia-diem/${places.webSEO.fullSlug}`}>
+            <Link href={`/dia-diem${places.webSEO.fullSlug}`}>
               <a className="d-block" title={places.name}>
-                <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
+                <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0 px-3">
                   <Image
                     alt={places.name}
                     priority={true}
-                    objectFit="cover"
+                    objectFit="contain"
                     layout="fill"
                     className="img-fluid f-select"
-                    src="/assets/images/logo/mapstore-logo-xs.png"
+                    src="/assets/images/logo/mapstore-logo-ver.png"
                   />
                 </Figure>
               </a>
@@ -53,7 +53,7 @@ const Card = ({ data }) => {
         </Col>
         <Col xs={12} lg={9}>
           <h3 className="item-name">
-            <Link href={`/dia-diem/${places.webSEO.fullSlug}`}>
+            <Link href={`/dia-diem${places.webSEO.fullSlug}`}>
               <a
                 className="d-block h5 font-weight-medium item-name-link"
                 title={places.name}

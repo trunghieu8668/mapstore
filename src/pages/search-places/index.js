@@ -14,7 +14,8 @@ import Card from "../../components/places/Card";
 import CardListNoPicture from "../../components/places/CardListNoPicture";
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
-const PageSize = process.env.PAGESIZE;
+const PageSize = process.env.PAGESIZE || 10;
+const sizePerPageList = [10, 15, 20]
 
 const ShowResult = ({ props }) => {
   const data = props.data.data;
@@ -27,13 +28,13 @@ const ShowResult = ({ props }) => {
         <Card key={i} data={b} />
       ))}
       <div className="clearfix w-100 my-4"></div>
-      {total > PageSize && (
+      {/* {total > PageSize && (
         <Pagination
           total={total}
           sizes={sizePerPageList}
           theme={nextPaginationStyle}
         />
-      )}
+      )} */}
     </>
   );
 };
@@ -53,7 +54,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
   );
 };
 const SearchPlaces = (props) => {
-  const total = props.items.total;
+  const total = props.items.total || 0;
   const title = props.query
     ? "Kết quả tìm kiếm cho từ khóa " + props.query.s
     : "";
@@ -85,12 +86,15 @@ const SearchPlaces = (props) => {
                         </label>
                       </div>
                       <ShowResult props={props.items} />
-                      <div className="clearfix w-100 my-4"></div>
-                      <Pagination
-                        total={total}
-                        sizes={[10, 15, 20]}
-                        theme={nextPaginationStyle}
-                      />
+                      <div className="clearfix w-100 my-4 pl-3 pr-3">
+                        <Pagination
+                          total={total}
+                          sizes={sizePerPageList}
+                          theme={nextPaginationStyle}
+                        />
+                        <br />
+                      </div>
+
                     </div>
                   </Col>
                   <Col md={4} lg={4}>

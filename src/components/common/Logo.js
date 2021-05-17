@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
-const srcLogo = "/assets/images/logo/mapstore-logo-xs.png";
+const srcLogo = "/assets/images/logo/mapstore-logo-min.png";
 
 const Logo = ({ title, className, children }) => {
   return (
@@ -15,8 +15,8 @@ const Logo = ({ title, className, children }) => {
         <Image
           className="logo-img"
           alt={title}
-          width={200}
-          height={200}
+          width={194}
+          height={65}
           src={srcLogo}
         />
         {children && children != "" && children}

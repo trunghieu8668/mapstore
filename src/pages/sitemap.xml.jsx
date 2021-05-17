@@ -17,7 +17,7 @@ const createSitemap = (
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    ${placesList && placesList.length > 0 && placesList.map((place) => toUrl(host, `/chi-tiet-dia-diem/${place.webSEO.slug}`)).join("")}
+    ${placesList && placesList.length > 0 && placesList.map((place) => toUrl(host, `/dia-diem${place.webSEO.fullSlug}`)).join("")}
     </urlset>`;
 
 const Sitemap = () => { };

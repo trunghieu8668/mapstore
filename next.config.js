@@ -114,6 +114,10 @@ module.exports = {
         source: '/dia-diem/:slug*',
         destination: '/chi-tiet-dia-diem/:slug*',
       },
+      {
+        source: '/:slug',
+        destination: '/chi-tiet-dia-diem/:slug',
+      },
       // nhóm địa điểm
       {
         source: '/nhom-dia-diem/:slug',
