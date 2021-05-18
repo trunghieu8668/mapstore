@@ -115,7 +115,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
               <ul className="list-unstyled">
                 <li className="item h6 font-weight-normal mb-3">
                   <address className="mb-0">
-                    <b><i className="flaticon-pin icon"></i></b> 
+                    <b><i className="flaticon-pin icon"></i></b>
                     {data.data.address}
                     {data.data.ward && ", " + data.data.ward}
                     {data.data.district && ", " + data.data.district}
@@ -123,61 +123,75 @@ const ShowPlaceDetail = ({ props = {} }) => {
                   </address>
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
-                  <span className="d-md-inline mr-md-4 mr-2">
-                    <b><i className="flaticon-whatsapp"></i> </b>{" "}
-                    {data.data.phones && (
-                      <a
-                        href={`tel:${data.data.phones}`}
-                        title={data.data.phones}
-                      >
-                        {data.data.phones}
-                      </a>
-                    )}
-                  </span>
-                  <span>
-                    <b>Mã số thuế: </b>{" "}
-                    {data.data.taxCode ? (
-                      <span>{data.data.taxCode}</span>
-                    ) : (
-                      <span className="text-notfound text-muted text-italic">
-                        Đang cập nhật
+                  <ul className="row list-unstyled">
+                    <li className="col-md-6">
+                      <span className="d-md-inline mr-md-4 mr-2">
+                        <b><i className="bi bi-telephone"></i> </b>{" "}
+                        {data.data.phones && (
+                          <a
+                            href={`tel:${data.data.phones}`}
+                            title={data.data.phones}
+                          >
+                            {data.data.phones}
+                          </a>
+                        )}
                       </span>
-                    )}
-                  </span>
+                    </li>
+                    <li className="col-md-6">
+                      <span>
+                        <b><i className="bi bi-building"></i> </b>{" "}
+                        {data.data.taxCode ? (
+                          <span>{data.data.taxCode}</span>
+                        ) : (
+                          <span className="text-notfound text-muted text-italic">
+                            Đang cập nhật
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  </ul>
+
+
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
-                  <span className="d-md-inline mr-md-4 mr-2">
-                    <b>Website: </b>{" "}
-                    {data.data.website ? (
-                      <a
-                        target="_blank"
-                        rel="nofollow"
-                        href={`${data.data.website}`}
-                        title={data.data.name}
-                      >
-                        {data.data.website}
-                      </a>
-                    ) : (
-                      <span className="text-notfound text-muted text-italic">
-                        Đang cập nhật
+                  <ul className="row list-unstyled">
+                    <li className="col-md-6">
+                      <span className="d-md-inline mr-md-4 mr-2">
+                        <b><i className="bi bi-link-45deg"></i></b>{" "}
+                        {data.data.website ? (
+                          <a
+                            target="_blank"
+                            rel="nofollow"
+                            href={`${data.data.website}`}
+                            title={data.data.name}
+                          >
+                            {data.data.website}
+                          </a>
+                        ) : (
+                          <span className="text-notfound text-muted text-italic">
+                            Đang cập nhật
+                          </span>
+                        )}
                       </span>
-                    )}
-                  </span>
-                  <span>
-                    <b>Email: </b>{" "}
-                    {data.data.email ? (
-                      <a
-                        href={`mailto:${data.data.email}`}
-                        title={data.data.email}
-                      >
-                        {data.data.email}{" "}
-                      </a>
-                    ) : (
-                      <span className="text-notfound text-muted text-italic">
-                        Đang cập nhật
+                    </li>
+                    <li className="col-md-6">
+                      <span>
+                        <b><i className="bi bi-envelope"></i></b>{" "}
+                        {data.data.email ? (
+                          <a
+                            href={`mailto:${data.data.email}`}
+                            title={data.data.email}
+                          >
+                            {data.data.email}{" "}
+                          </a>
+                        ) : (
+                          <span className="text-notfound text-muted text-italic">
+                            Đang cập nhật
+                          </span>
+                        )}
                       </span>
-                    )}
-                  </span>
+                    </li>
+                  </ul>
                 </li>
               </ul>
               <div className="d-block mt-5 mb-4">
@@ -215,7 +229,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
       <div className="clearfix w-100 my-1"></div>
       {related && related.length > 0 && (
         <div className="mt-5 d-block border-top pt-3">
-          <h2 className="h5">{data.data.categories[0].name} - {data.data.ward}, {data.data.district}, {data.data.city}</h2>
+          <h2 className="h6 font-weight-bold">Xem thêm {data.data.categories[0].name}</h2>
         </div>
       )}
       {showRelated()}
@@ -238,6 +252,20 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
     </>
   );
 };
+// const ShowAsideDistrict = ({ props = {} }) => {
+//   const data = props.placesListLatest.data.data.data;
+//   const []
+//   return (
+//     <>
+//       <div className="aside-group bg-white">
+//         <div className="pl-3 pr-3 pt-3">
+//           <h5 className="aside-title">Địa điểm mới cập nhật</h5>
+//         </div>
+        
+//       </div>
+//     </>
+//   );
+// };
 const SinglePlaces = (props) => {
   const title = props.itemDetail.data.data.webSEO.title || null;
   const description = props.itemDetail.data.data.webSEO.description || null;
@@ -259,6 +287,7 @@ const SinglePlaces = (props) => {
                     <ShowPlaceDetail props={props} />
                   </Col>
                   <Col md={4} lg={4}>
+                    {/* <ShowAsideDistrict props={props}/> */}
                     <ShowAsidePlaceLatest props={props} />
                   </Col>
                 </Row>
