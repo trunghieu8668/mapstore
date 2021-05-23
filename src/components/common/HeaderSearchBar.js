@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,11 +51,11 @@ function SearchBarMobile({ action = "/search-places" }) {
                 <Button
                   variant="primary"
                   type="submit"
-                  className="btn-submit pl-4 pr-4"
+                  className="btn btn-primary"
                 >
                   <span className="icons">
                     <span className="icon">
-                      <FontAwesomeIcon icon={faSearch} />
+                      <i className="bi bi-search"></i>
                     </span>
                   </span>
                 </Button>

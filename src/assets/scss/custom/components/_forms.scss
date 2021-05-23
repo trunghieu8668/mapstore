@@ -26,13 +26,6 @@
     }
 
     .btn-submit {
-      display: flex;
-      align-items: center;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-
       .btn {
         background-color: var(--color1);
         border-radius: 34px;
