@@ -24,9 +24,6 @@ const ShowResult = ({ props }) => {
       {_.map(data, (b, i) => (
         <Card key={i} data={b} />
       ))}
-      {_.map(data, (b, i) => (
-        <Card key={i} data={b} />
-      ))}
       <div className="clearfix w-100 my-4"></div>
       {/* {total > PageSize && (
         <Pagination
@@ -86,15 +83,16 @@ const SearchPlaces = (props) => {
                         </label>
                       </div>
                       <ShowResult props={props.items} />
-                      <div className="clearfix w-100 my-4 pl-3 pr-3">
-                        <Pagination
-                          total={total}
-                          sizes={sizePerPageList}
-                          theme={nextPaginationStyle}
-                        />
-                        <br />
-                      </div>
-
+                      {props.items.total > PageSize ? (
+                        <div className="clearfix w-100 my-4 pl-3 pr-3">
+                          <Pagination
+                            total={total}
+                            sizes={sizePerPageList}
+                            theme={nextPaginationStyle}
+                          />
+                          <br />
+                        </div>
+                      ) : ''}
                     </div>
                   </Col>
                   <Col md={4} lg={4}>

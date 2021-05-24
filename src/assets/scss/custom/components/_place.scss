@@ -1,0 +1,17 @@
+// Chi tiet dia diem - Place Detail
+.places-detail-wrapper {
+  .icons {
+    i {
+      color: var(--color1)
+    }
+  }
+  .places-image {
+    padding-top: 60%;
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      
+    }
+  }
+}

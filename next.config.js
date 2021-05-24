@@ -1,5 +1,6 @@
 const path = require('path')
-const withImages = require('next-images')
+const withImages = require('next-images');
+const withPlugins = require('next-compose-plugins')
 const withFonts = require('next-fonts');
 
 module.exports = withFonts({
@@ -14,14 +15,20 @@ module.exports = {
   generateEtags: false,
   trailingSlash: true,
   compress: false,
-  images: {
-    domains: ['mapstore.vn'],
-  },
   future: {
     webpack5: true,
     strictPostcssConfiguration: true
   }
 }
+const nextConfigImage = { 
+  images: {
+    domains: ["mapstore.vn", "fs.mapstore.vn"],
+    deviceSizes: [320, 480, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
+  },
+}
+module.exports = withPlugins([[withImages]], nextConfigImage)
+
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',

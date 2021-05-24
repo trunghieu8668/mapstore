@@ -4,6 +4,10 @@ import Image from "next/image";
 import { removeFirstCharacter } from "../../helpers/Util";
 import { useRouter } from "next/router";
 
+const prismicLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+
 const Card = ({ data }) => {
   const router = useRouter();
   const places = { ...data };
@@ -24,6 +28,7 @@ const Card = ({ data }) => {
               <a className="d-block" title={places.name}>
                 <Figure className="position-relative w-100 d-block figure-haft imageLinkWrapper mb-md-0">
                   <Image
+                    loader={prismicLoader}
                     alt={places.name}
                     className="img-fluid f-select"
                     priority={true}

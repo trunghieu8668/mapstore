@@ -51,7 +51,8 @@ function SearchBarMobile({ action = "/search-places" }) {
                 <Button
                   variant="primary"
                   type="submit"
-                  className="btn btn-primary"
+                  active
+                  className="btn btn-primary rounded-0"
                 >
                   <span className="icons">
                     <span className="icon">

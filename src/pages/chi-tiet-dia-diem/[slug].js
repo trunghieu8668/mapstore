@@ -1,5 +1,6 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import PropTypes from "prop-types"
 import { Figure, Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 import _ from "lodash";
@@ -23,16 +24,21 @@ import CardListNoPicture from "../../components/places/CardListNoPicture";
 import Share from "../../components/common/Share";
 const ScrollHeader = WithHeaderScroll(Header);
 
+const prismicLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 85}`
+}
+
 const ShowPlaceDetail = ({ props = {} }) => {
   const router = useRouter();
-  const slug = router.query.slug || [];  
+  const slug = router.query.slug || [];
   // const post = [router]
-  const data = props.itemDetail.data || {};
-  const query = props.itemDetail.query;
+  const data = props.itemDetail && props.itemDetail.data || null;
+  const query = props.itemDetail && props.itemDetail.query;
+  console.log(data)
   const id = query;
   // State
   const categoryId =
-    data.data.categories && data.data.categories.length > 0
+    data && data.data.categories && data.data.categories.length > 0
       ? data.data.categories[0].id
       : 0;
   const [related, setRelated] = useState([]);
@@ -55,24 +61,26 @@ const ShowPlaceDetail = ({ props = {} }) => {
       <>
         <div className="places-detail-wrapper">
           <div className="row pl-xs-12 mb-8 text-xs-left">
-            <div className="col-3 col-lg-3">
-              {data.data.pictures && data.data.pictures.length > 0 ? (
-                <Figure className="position-relative w-100 d-block">
+            {console.log(data && data.data.pictures && data.data.pictures.length)}
+            <div className={data && data.data.pictures && data.data.pictures.length > 0 ? "col-12" : "col-3 col-lg-3"}>
+              {data && data.data.pictures && data.data.pictures.length > 0 ? (
+                <Figure className="position-relative w-100 d-block h-100">
                   <Image
-                    alt={data.data.name}
-                    className="logo-img"
-                    width={480}
-                    height={320}
-                    layout="responsive"
+                    loader={prismicLoader}
                     src={data.data.pictures[0]}
+                    alt={data.data.name}
+                    priority={true}
+                    objectFit="cover"
+                    layout="fill"
+                    className="logo-img img-fluid f-select"
                   />
                 </Figure>
               ) : (
                 <Figure className="position-relative w-100 d-block figure-haft">
                   <Image
-                    alt={data.data.name}
+                    alt={data && data.data.name}
                     priority={true}
-                    objectFit="cover"
+                    objectFit="contain"
                     layout="fill"
                     className="img-fluid f-select"
                     src="/assets/images/logo/mapstore-logo-min.png"
@@ -82,10 +90,10 @@ const ShowPlaceDetail = ({ props = {} }) => {
             </div>
             <div className="col-9 col-md-9 col-lg-9">
               <h1 className="h4 font-size-6 text-black-2 font-weight-semibold">
-                {data.data.name}
+                {data && data.data.name}
               </h1>
               <div className="mb-0">
-                {data.data.categories &&
+                {data && data.data.categories &&
                   _.map(data.data.categories, (category, i) => (
                     <h2 key={i}>
                       <Link
@@ -115,16 +123,16 @@ const ShowPlaceDetail = ({ props = {} }) => {
               <ul className="list-unstyled">
                 <li className="item h6 font-weight-normal mb-3">
                   <address className="mb-0">
-                    <b>Địa chỉ:</b> {data.data.address}
-                    {data.data.ward && ", " + data.data.ward}
-                    {data.data.district && ", " + data.data.district}
-                    {data.data.city && ", " + data.data.city}
+                    <b>Địa chỉ:</b> {data && data.data.address}
+                    {data && data.data.ward && ", " + data && data.data.ward}
+                    {data && data.data.district && ", " + data && data.data.district}
+                    {data && data.data.city && ", " + data && data.data.city}
                   </address>
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4 mr-2">
                     <b>Điện thoại: </b>{" "}
-                    {data.data.phones && (
+                    {data && data.data.phones && (
                       <a
                         href={`tel:${data.data.phones}`}
                         title={data.data.phones}
@@ -135,7 +143,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                   </span>
                   <span>
                     <b>Mã số thuế: </b>{" "}
-                    {data.data.taxCode ? (
+                    {data && data.data.taxCode ? (
                       <span>{data.data.taxCode}</span>
                     ) : (
                       <span className="text-notfound text-muted text-italic">
@@ -147,7 +155,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 <li className="item h6 font-weight-normal mb-3">
                   <span className="d-md-inline mr-md-4 mr-2">
                     <b>Website: </b>{" "}
-                    {data.data.website ? (
+                    {data && data.data.website ? (
                       <a
                         target="_blank"
                         rel="nofollow"
@@ -164,7 +172,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                   </span>
                   <span>
                     <b>Email: </b>{" "}
-                    {data.data.email ? (
+                    {data && data.data.email ? (
                       <a
                         href={`mailto:${data.data.email}`}
                         title={data.data.email}
@@ -183,7 +191,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 <h3 className="h4 font-weight-medium">GIỚI THIỆU</h3>
                 <div className="clearfix"></div>
                 <div className="post-article d-block mt-3">
-                  {data.data.description ? (
+                  {data && data.data.description ? (
                     // <article dangerouslySetInnerHTML={{ __html: data.data.description }} />
                     <article className="text-justify font-size-4">
                       {parse(data.data.description.replace(/\n/g, "<br/>"), {
@@ -236,8 +244,8 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
   );
 };
 const SinglePlaces = (props) => {
-  const title = props.itemDetail.data.data.webSEO.title || null;
-  const description = props.itemDetail.data.data.webSEO.description || null;
+  const title = props.itemDetail.data && props.itemDetail.data.data.webSEO.title || null;
+  const description = props.itemDetail.data && props.itemDetail.data.data.webSEO.description || null;
   return (
     <>
       <Layout
@@ -272,8 +280,8 @@ const SinglePlaces = (props) => {
 SinglePlaces.getInitialProps = async ({ query }) => {
   const [itemDetail, placesListLatest] = await Promise.all([
     singlePlace(query.slug).then((data) => {
-      if (data.error) {
-        console.log(data.error);
+      if (data.status === 0) {
+        return { data: null, query }
       } else {
         return { data, query };
       }
@@ -289,5 +297,9 @@ SinglePlaces.getInitialProps = async ({ query }) => {
 
   return { itemDetail, placesListLatest };
 };
+
+SinglePlaces.PropTypes = {
+  props: PropTypes.object
+}
 
 export default SinglePlaces;

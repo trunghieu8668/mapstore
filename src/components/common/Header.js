@@ -37,17 +37,17 @@ const Header = ({ isHome }) => {
       ) : (
         <header
           id="Header"
-          className="px-md-4 position-relative bg-white shadow-sm border-bottom container-fluid"
+          className="px-md-4 position-relative shadow-sm border-bottom container-fluid text-white bg-primary"
         >
-          <div className="container">
+          <div className="container container-lg">
             <div className="row align-items-center">
-              <div className="my-0 col-3 col-md-auto header-logo">
+              <div className="my-0 col-3 col-md-auto col-lg-auto header-logo">
                 <Logo />
               </div>
               <div className="my-0 col-9 col-md-auto mr-md-auto flex-grow-1">
                 <SearchBar />
               </div>
-              <div className="my-0 mr-md-auto flex-grow-1 h-100 d-none d-md-flex">
+              <div className="my-0 mr-md-auto col-lg-auto h-100 d-none d-md-flex">
                 <div className="header-mega-menu loding-header custom-scroll">
                   <nav className="nav float-right">
                     <Nav />

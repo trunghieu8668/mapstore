@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./root";
 @import "../font-awesome/scss/font-awesome";
 // General
 @import "./custom/general";
@@ -7,3 +8,4 @@
 // Home Page
 @import "./custom/components/cover";
 @import "./custom/components/forms";
+@import "./custom/components/place";

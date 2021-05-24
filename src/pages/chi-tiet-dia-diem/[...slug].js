@@ -1,11 +1,14 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types"
 import Image from "next/image";
 import { Figure, Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
-import _ from "lodash";
+import { map } from "lodash";
+import ImageGallery from 'react-image-gallery';
+import NumberFormat from 'react-number-format';
 import { useRouter } from "next/router";
 import parse, { attributesToProps } from "html-react-parser";
-
+import 'react-image-gallery/styles/css/image-gallery.css';
 // Library
 import { PLACES_URL } from "../../../config";
 import {
@@ -23,6 +26,9 @@ import CardListNoPicture from "../../components/places/CardListNoPicture";
 import Share from "../../components/common/Share";
 const ScrollHeader = WithHeaderScroll(Header);
 
+const prismicLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 85}`
+}
 const ShowPlaceDetail = ({ props = {} }) => {
   const router = useRouter();
   const slug = router.query.slug || [];
@@ -50,23 +56,61 @@ const ShowPlaceDetail = ({ props = {} }) => {
   const showRelated = () => {
     return related.map((e, i) => <Card data={e} key={i} />);
   };
+  const imagePlaces = data && data.data.pictures && data.data.pictures.length > 0 && map(data.data.pictures, picture => {
+    return {
+      original: picture,
+      thumbnail: picture,
+      renderItem: () => {
+        return (
+          <>
+            <Figure className="position-relative w-100 d-block h-100 places-image mb-lg-0">
+              <Image
+                loader={prismicLoader}
+                src={picture}
+                alt={data.data.name}
+                priority={true}
+                objectFit="cover"
+                layout="fill"
+                className="logo-img img-fluid f-select"
+                quality={85}
+              />
+            </Figure>
+          </>
+        )
+      }
+    }
+  })
   const placeInfo = () => {
     return (
       <>
         <div className="places-detail-wrapper">
           <div className="row pl-xs-12 mb-8 text-xs-left">
-            <div className="col-3 col-lg-3">
+            <div className={data && data.data.pictures && data.data.pictures.length > 0 ? "col-12 order-lg-1" : "col-3 col-lg-3"}>
               {data.data.pictures && data.data.pictures.length > 0 ? (
-                <Figure className="position-relative w-100 d-block">
-                  <Image
-                    alt={data.data.name}
-                    priority={true}
-                    objectFit="contain"
-                    layout="fill"
-                    className="logo-img img-fluid f-select"
-                    src={data.data.pictures[0]}
-                  />
-                </Figure>
+                <ImageGallery
+                  items={imagePlaces}
+                  className="Slider-img"
+                  showPlayButton={false}
+                  showFullscreenButton={false}
+                  showThumbnails={data && data.data.pictures && data.data.pictures.length > 2 ? true : false}
+                  showNav={false}
+                  showBullets={false}
+                  autoPlay={false}
+                  lazyLoad={true}
+                  thumbnailPosition={data && data.data.pictures && data.data.pictures.length > 2 ? "right" : "bottom"}
+                />
+                // <Figure className="position-relative w-100 d-block h-100">
+                //   <Image
+                //     loader={prismicLoader}
+                //     src={data.data.pictures[0]}
+                //     alt={data.data.name}
+                //     priority={true}
+                //     objectFit="contain"
+                //     layout="fill"
+                //     className="logo-img img-fluid f-select"
+                //     quality={85}
+                //   />
+                // </Figure>
               ) : (
                 <Figure className="position-relative w-100 d-block figure-haft">
                   <Image
@@ -80,13 +124,13 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 </Figure>
               )}
             </div>
-            <div className="col-9 col-md-9 col-lg-9">
-              <h1 className="h4 font-size-6 text-black-2 font-weight-semibold">
+            <div className={data && data.data.pictures && data.data.pictures.length > 0 ? "col-12 mt-lg-3 order-lg-2" : "col-9 col-md-9 col-lg-9"}>
+              <h1 className="font-size-7 text-black-2 font-weight-semibold mb-0">
                 {data.data.name}
               </h1>
               <div className="mb-0">
                 {data.data.categories &&
-                  _.map(data.data.categories, (category, i) => (
+                  map(data.data.categories, (category, i) => (
                     <h2 key={i}>
                       <Link
                         href={`/${PLACES_URL}/${category.id.replace(
@@ -115,7 +159,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
               <ul className="list-unstyled">
                 <li className="item h6 font-weight-normal mb-3">
                   <address className="mb-0">
-                    <b><i className="flaticon-pin icon"></i></b>
+                    <span className="icons mr-1"><i className="bi bi-geo-alt"></i></span>
                     {data.data.address}
                     {data.data.ward && ", " + data.data.ward}
                     {data.data.district && ", " + data.data.district}
@@ -124,22 +168,23 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <ul className="row list-unstyled">
-                    <li className="col-md-6">
+                    <li className="col-6 col-md-6">
                       <span className="d-md-inline mr-md-4 mr-2">
-                        <b><i className="bi bi-telephone"></i> </b>{" "}
+                        <span className="icons mr-1"><i className="bi bi-telephone"></i> </span>{" "}
                         {data.data.phones && (
                           <a
                             href={`tel:${data.data.phones}`}
                             title={data.data.phones}
                           >
                             {data.data.phones}
+                            {/* <NumberFormat value="0916033960" displayType={'text'}/> */}
                           </a>
                         )}
                       </span>
                     </li>
-                    <li className="col-md-6">
+                    <li className="col-6 col-md-6">
                       <span>
-                        <b><i className="bi bi-building"></i> </b>{" "}
+                        <span className="icons mr-1"><i className="bi bi-person-badge"></i> </span>{" "}
                         {data.data.taxCode ? (
                           <span>{data.data.taxCode}</span>
                         ) : (
@@ -155,9 +200,9 @@ const ShowPlaceDetail = ({ props = {} }) => {
                 </li>
                 <li className="item h6 font-weight-normal mb-3">
                   <ul className="row list-unstyled">
-                    <li className="col-md-6">
+                    <li className="col-6 col-md-6">
                       <span className="d-md-inline mr-md-4 mr-2">
-                        <b><i className="bi bi-link-45deg"></i></b>{" "}
+                        <span className="icons mr-1"><i className="bi bi-link-45deg"></i> </span>{" "}
                         {data.data.website ? (
                           <a
                             target="_blank"
@@ -174,9 +219,9 @@ const ShowPlaceDetail = ({ props = {} }) => {
                         )}
                       </span>
                     </li>
-                    <li className="col-md-6">
+                    <li className="col-6 col-md-6">
                       <span>
-                        <b><i className="bi bi-envelope"></i></b>{" "}
+                        <span className="icons mr-1"><i className="bi bi-envelope"></i> </span>{" "}
                         {data.data.email ? (
                           <a
                             href={`mailto:${data.data.email}`}
@@ -192,6 +237,20 @@ const ShowPlaceDetail = ({ props = {} }) => {
                       </span>
                     </li>
                   </ul>
+                </li>
+                <li className="item h6 font-weight-normal mb-3">
+                  <span className="text-muted small me-3">
+                    <span className="icons mr-1"> Ngày tạo: </span>{" "}
+                    {data.data.createdDate && (
+                      <time>{new Date(data.data.createdDate).toLocaleString('en-GB')}</time>
+                    ) }
+                  </span>
+                  <span className="text-muted small ml-5">
+                    <span className="icons mr-1"> Ngày cập nhật: </span>{" "}
+                    {data.data.lastUpdatedDate && (
+                      <time>{new Date(data.data.lastUpdatedDate).toLocaleString('en-GB')}</time>
+                    ) }
+                  </span>
                 </li>
               </ul>
               <div className="d-block mt-5 mb-4">
@@ -245,7 +304,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
         <div className="pl-3 pr-3 pt-3">
           <h5 className="aside-title">Địa điểm mới cập nhật</h5>
         </div>
-        {_.map(data, (e, i) => (
+        {map(data, (e, i) => (
           <CardListNoPicture data={e} key={i} />
         ))}
       </div>
@@ -261,7 +320,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
 //         <div className="pl-3 pr-3 pt-3">
 //           <h5 className="aside-title">Địa điểm mới cập nhật</h5>
 //         </div>
-        
+
 //       </div>
 //     </>
 //   );
@@ -326,5 +385,9 @@ SinglePlaces.getInitialProps = async ({ query }) => {
 
   return { itemDetail, placesListLatest };
 };
+
+SinglePlaces.propTypes = {
+  props: PropTypes.object
+}
 
 export default SinglePlaces;

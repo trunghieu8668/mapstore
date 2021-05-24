@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import { RadioButton } from "primereact/radiobutton";
 
 // import { Breadcrumbs } from '../../helpers/Breadcrumbs'
 import Pagination from "next-pagination";
@@ -145,22 +144,7 @@ const CategoryGroup = ({ data, query, page }) => {
                         list.length > 0 &&
                         list[0].categories.map((b, i, array) => (
                           <div className="p-field-radiobutton">
-                            <RadioButton
-                              inputId={
-                                slugify(b.label, {
-                                  lower: true,
-                                  strict: true,
-                                  locale: "vi",
-                                  replacement: "-",
-                                }) +
-                                "-" +
-                                i
-                              }
-                              name="filterCheckListRadios"
-                              value={b.label}
-                              onChange={handleChangeChecked("categoryId")}
-                              checked={i === 0 ? true : false}
-                            />
+                            
 
                             <label
                               htmlFor={

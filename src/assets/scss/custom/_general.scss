@@ -8,6 +8,7 @@ html {
 }
 
 body {
+  color: #333;
   background: #f4f5f8;
   overflow-x: hidden;
   font-size: 14px;
@@ -41,12 +42,29 @@ body {
   -ms-flex-pack: center;
   justify-content: center;
 }
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {line-height:1.5}
-a {
-  color: #333;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 1.5;
+  font-weight: 400;
 }
 
-.text-gray > a,
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.text-gray>a,
 .text-gray {
   color: var(--grey);
 }
@@ -267,7 +285,7 @@ a {
 #Header {
   z-index: 600;
   width: 100%;
-  padding-top: 10px;
+  padding-top: 0;
 
   &.nav-lg {
     padding: 2rem 1rem;
@@ -294,9 +312,16 @@ a {
     }
   }
 
+  // Logo
   .header-logo {
-    img {
-      max-height: 65px;
+    .logo-link {
+      >div {
+        height: 100%;
+        margin-top: 5px !important;
+        img {
+          max-height: 65px;
+        }
+      }
     }
   }
 
@@ -345,6 +370,7 @@ a {
         a {
           margin: 0;
           border: 0;
+          color: #fff;
           line-height: 1;
           text-decoration: none;
           display: inline-block;
@@ -356,15 +382,15 @@ a {
           letter-spacing: 0;
         }
 
-        > a {
+        >a {
           color: dark;
 
           &:hover {
-            color: var(--color1);
+            color: yellow;
           }
         }
 
-        > ul {
+        >ul {
           display: none;
         }
 
@@ -373,7 +399,7 @@ a {
             display: block;
           }
 
-          > ul {
+          >ul {
             display: block;
           }
         }
@@ -386,7 +412,7 @@ a {
         }
       }
 
-      .sub-menu > a,
+      .sub-menu>a,
       .dropdown {
         &:before {
           position: absolute;
@@ -443,7 +469,7 @@ a {
           &:hover,
           &:focus,
           &:active {
-            > a {
+            >a {
               color: $gray15;
               transform: translateX(2%);
             }
@@ -604,17 +630,20 @@ a {
 
 .section-404 {
   background-color: var(--color1);
+
   .btn-default {
     &:hover {
       box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
     }
   }
+
   .text-404 {
     font-size: 15px;
     letter-spacing: 1px;
     margin: 10px 50px;
     font-weight: 300;
   }
+
   .central-body {
     display: flex;
     justify-content: center;
@@ -622,6 +651,7 @@ a {
     height: 100vh;
     flex-direction: column;
   }
+
   .sub-text {
     margin-top: 50px;
     margin-bottom: 10px;
