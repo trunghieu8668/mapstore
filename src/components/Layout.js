@@ -5,6 +5,8 @@ const Layout = ({
   title = "",
   description = "",
   keywords = "",
+  url = "",
+  picture = "",
   className,
   children,
 }) => {
@@ -143,6 +145,18 @@ const Layout = ({
           ></script>
           <script dangerouslySetInnerHTML={setGoogleTags()} />
         </React.Fragment>
+        {/* <!--facebook Metadata /--> */}
+        <meta property="og:url" itemprop="url" content={url} />
+        <meta property="fb:app_id" content="1725496681047071" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="vi_VN" />
+        <meta property="og:image" content={picture} />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:site_name" content="mapstore.vn" />
+        <meta property="article:author" content="https://www.facebook.com/Mapstorevn-113663837490091" />
+        <meta property="article:publisher" content="https://mapstore.vn" />
       </Head>
       <main className={className}>{children}</main>
       <React.Fragment>

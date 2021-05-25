@@ -326,13 +326,17 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
 //   );
 // };
 const SinglePlaces = (props) => {
-  const title = props.itemDetail.data.data.webSEO.title || null;
-  const description = props.itemDetail.data.data.webSEO.description || null;
+  const title = props.itemDetail && props.itemDetail.data.data.webSEO.title || null;
+  const description = props.itemDetail && props.itemDetail.data.data.webSEO.description || null;
+  const picture = props.itemDetail && props.itemDetail.data.data.pictures && props.itemDetail.data.data.pictures.length > 0 ? props.itemDetail.data.data.pictures[0] : "https://mapstore.vn/assets/images/logo/mapstorelogo_nobg_white.png"
+  const url = ""
   return (
     <>
       <Layout
         title={title}
         description={description}
+        url={url}
+        picture={picture}
         keywords=""
         className="wrapper-site"
       >
