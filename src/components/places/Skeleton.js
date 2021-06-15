@@ -3,7 +3,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 const SkeletonLoading = ({ count }) => {
   return (
     <>
-      {[...Array(count || 1)].map((i) => (
+      {[...Array(count || 1)].map((e, i) => (
         <div className="mt-2 mb-4 bg-white rounded p-4">
           <SkeletonTheme highlightColor="#eee" key={i} className="mb-4">
             <Row>

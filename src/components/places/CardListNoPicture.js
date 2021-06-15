@@ -9,7 +9,15 @@ const CardListNoPicture = ({ data }) => {
       <Row>
         <Col xs={12} lg={12}>
           <h3 className="item-name">
-            <Link href={`/dia-diem${places.webSEO.fullSlug}`}>
+            <Link
+              href={`/dia-diem${places.webSEO.fullSlug}`}
+              onClick={() => {
+                router.push({
+                  pathname: "/dia-diem[fullSlug]",
+                  query: { fullSlug: places.webSEO.fullSlug }
+                });
+              }}
+            >
               <a
                 className="d-block font-size-4 font-weight-medium item-name-link"
                 title={places.name}

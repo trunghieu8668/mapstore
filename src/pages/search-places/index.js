@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import _ from "lodash";
+import { map } from "lodash";
 import { Container, Row, Col } from "react-bootstrap";
 // import slugify from 'slugify'
 import Pagination from "next-pagination";
@@ -21,17 +21,11 @@ const ShowResult = ({ props }) => {
   const data = props.data.data;
   return (
     <>
-      {_.map(data, (b, i) => (
+      {map(data, (b, i) => (
+        // JSON.stringify(b)
         <Card key={i} data={b} />
       ))}
       <div className="clearfix w-100 my-4"></div>
-      {/* {total > PageSize && (
-        <Pagination
-          total={total}
-          sizes={sizePerPageList}
-          theme={nextPaginationStyle}
-        />
-      )} */}
     </>
   );
 };
@@ -43,7 +37,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
         <div className="pl-3 pr-3 pt-3">
           <h5 className="aside-title">Địa điểm mới cập nhật</h5>
         </div>
-        {_.map(data, (e, i) => (
+        {map(data, (e, i) => (
           <CardListNoPicture data={e} key={i} />
         ))}
       </div>
@@ -56,7 +50,6 @@ const SearchPlaces = (props) => {
     ? "Kết quả tìm kiếm cho từ khóa " + props.query.s
     : "";
   const description = null;
-  //props.item.data.data.description ? props.item.data.data.description : ''
   return (
     <>
       <Layout

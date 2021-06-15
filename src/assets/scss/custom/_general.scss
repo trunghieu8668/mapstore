@@ -318,6 +318,7 @@ a {
       >div {
         height: 100%;
         margin-top: 5px !important;
+
         img {
           max-height: 65px;
         }
@@ -387,6 +388,17 @@ a {
 
           &:hover {
             color: yellow;
+          }
+
+          &.active {
+            background-color: #0044c9;
+            border-radius: 5px;
+
+          }
+
+          &.active:hover {
+            background-color: var(--bs-warning);
+            color: #fff;
           }
         }
 

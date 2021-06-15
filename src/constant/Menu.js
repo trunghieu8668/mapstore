@@ -22,26 +22,37 @@ export const MENUITEMS = [
     path: "/",
     title: "Địa điểm",
     type: "oneLink",
+    activeClass: ""
   },
   {
     path: "/",
     title: "Cửa hàng",
     type: "oneLink",
+    activeClass: ""
   },
   {
     path: "/",
     title: "Sản phẩm",
     type: "oneLink",
+    activeClass: ""
   },
   {
     path: "/blog",
     title: "Blog",
     type: "oneLink",
+    activeClass: ""
   },
   {
     path: "/thong-tin-cong-ty/lien-he.html",
     title: "Liên hệ",
     type: "oneLink",
+    activeClass: ""
+  },
+  {
+    path: "/dia-diem/them-moi.html",
+    title: "Thêm địa điểm",
+    type: "oneLink",
+    activeClass: "active"
   },
   // {
   //   title: 'Cửa hàng', megaMenu: true, megaMenuType: 'small', type: 'sub', children: [

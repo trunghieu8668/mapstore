@@ -37,14 +37,14 @@ const Header = ({ isHome }) => {
       ) : (
         <header
           id="Header"
-          className="px-md-4 position-relative shadow-sm border-bottom container-fluid text-white bg-primary"
+          className="px-md-4 position-relative shadow-sm border-bottom container-fluid text-white bg-primary pt-2 pb-2 pt-md-1 pb-md-1 pt-lg-0 pb-lg-0"
         >
           <div className="container container-lg">
             <div className="row align-items-center">
-              <div className="my-0 col-3 col-md-auto col-lg-auto header-logo">
+              <div className="my-0 col-4 col-md-auto col-lg-auto header-logo">
                 <Logo />
               </div>
-              <div className="my-0 col-9 col-md-auto mr-md-auto flex-grow-1">
+              <div className="my-0 col-8 col-md-auto mr-md-auto flex-grow-1">
                 <SearchBar />
               </div>
               <div className="my-0 mr-md-auto col-lg-auto h-100 d-none d-md-flex">

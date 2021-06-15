@@ -97,7 +97,7 @@ const Nav = () => {
               {menuItem.type === "oneLink" ? (
                 <Link href={`${menuItem.path}`}>
                   <a
-                    className="sub-menu-title"
+                    className={`sub-menu-title ${menuItem.activeClass}`}
                     href={`${menuItem.path}`}
                     title={`${menuItem.title}`}
                   >

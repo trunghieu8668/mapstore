@@ -48,6 +48,60 @@ export const listAllGroupCategory = () => {
     .catch((err) => console.log(err));
 };
 
+export const getAllPlaceCategoy = async () => {
+  try {
+    const response = await Fetch(`${API}/public/place-category/all`, {
+      method: "GET",
+      headers: {
+        apikey: `${APIKEY}`,
+      },
+    });
+    return await response.json();
+  } catch (err) {
+    return console.log(err);
+  }
+};
+export const getAllCities = async () => {
+  try {
+    const response = await Fetch(`${API}/public/cities`, {
+      method: "GET",
+      headers: {
+        apikey: `${APIKEY}`,
+      },
+    });
+    return await response.json();
+  } catch (err) {
+    return console.log(err);
+  }
+};
+
+export const getDistrictByCity = (params) => {
+  try {
+    const response = Fetch(`${API}/public/districts?cityId=${params}`, {
+      method: "GET",
+      headers: {
+        apikey: `${APIKEY}`,
+      },
+    });
+    return  response.json();
+  } catch (err) {
+    return console.log(err);
+  }
+};
+
+export const getWardByDistrict = async (cityId, districtId,) => {
+  try {
+    const response = await Fetch(`${API}/public/wards?cityId=${cityId}&districtId=${districtId}`, {
+      method: "GET",
+      headers: {
+        apikey: `${APIKEY}`,
+      },
+    });
+    return await response.json();
+  } catch (err) {
+    return console.log(err);
+  }
+};
 export const singlePlace = (slug) => {
   const slugCheck = slug.toLowerCase().indexOf("-");
   const slugNew =
@@ -85,7 +139,7 @@ export const listRelated = (slug) => {
 export const sitemapGenerator = async () => {
   // return await Fetch(`${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=${(PAGESIZE !== undefined || PAGESIZE !== null) ? (PAGESIZE <= 300 ? PAGESIZE : 300) : 10}`, {
   return await Fetch(
-    `${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=13000`,
+    `${API}/public/places?categoryId=0&cityId=thanh_pho_ho_chi_minh&districtId=0&pageIndex=0&pageSize=18000`,
     {
       method: "GET",
       headers: {

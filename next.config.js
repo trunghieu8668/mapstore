@@ -23,8 +23,8 @@ module.exports = {
 const nextConfigImage = { 
   images: {
     domains: ["mapstore.vn", "fs.mapstore.vn"],
-    deviceSizes: [320, 480, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
+    deviceSizes: [567, 767, 992, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 512]
   },
 }
 module.exports = withPlugins([[withImages]], nextConfigImage)
@@ -95,6 +95,9 @@ module.exports = ({ dynamicAssetPrefix = false, nextConfig = {} } = {}) => {
       }
 
       return config
+    },
+    cssLoaderOptions: {
+      url: false
     }
   })
 }
@@ -114,16 +117,26 @@ module.exports = {
       // Wildcard Path Matching - will match `/blog/a` and `/blog/a/b`
       {
         source: '/blog/:slug*',
-        destination: '/news/:slug*',
+        destination: '/blog/:slug*',
+      },
+      // thêm địa điểm (place create)
+      {
+        source: '/dia-diem/them-moi.html',
+        destination: '/place-create',
+      },
+      // Dia diem theo thanh pho
+      {
+        source: '/dia-diem/:slug',
+        destination: '/places-by-city/:slug',
       },
       // chi tiết địa điểm
       {
-        source: '/dia-diem/:slug*',
-        destination: '/chi-tiet-dia-diem/:slug*',
+        source: '/dia-diem/:slug*/:slug*/:slug*/:slug*',
+        destination: '/place-detail/:slug*',
       },
       {
         source: '/:slug',
-        destination: '/chi-tiet-dia-diem/:slug',
+        destination: '/place-detail/:slug',
       },
       // nhóm địa điểm
       {
@@ -139,6 +152,7 @@ module.exports = {
         source: '/loai-dia-diem/:slug',
         destination: '/category-group/:slug',
       },
+      
 
     ]
   },

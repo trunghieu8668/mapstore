@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import dynamic from 'next/dynamic'
+
 // Config
 import { API, APIKEY, PAGESIZE } from "../../config";
 // Package
@@ -6,16 +8,22 @@ import _ from "lodash";
 import Router, { useRouter } from "next/router";
 import ReactPaginate from "react-paginate";
 // Component
-import Layout from "../components/Layout";
+// import Layout from "../components/Layout";
 import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
-import Card from "../components/places/Card";
-import Skeleton from "../components/places/Skeleton";
+// import Footer from "../components/common/Footer";
+// import Card from "../components/places/Card";
+// import Skeleton from "../components/places/Skeleton";
+
 // Call Api
 import { listPlacesByCategoryId } from "../actions/places";
 // HOC
 import WithHeaderScroll from "../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
+// Code Spi
+const Layout = dynamic(() => import("../components/Layout"));
+const Footer = dynamic(() => import("../components/common/Footer"));
+const Card = dynamic(() => import('../components/places/Card'));
+const Skeleton = dynamic(() => import('../components/places/Skeleton'))
 
 const Home = ({ data }) => {
   // Route
@@ -70,14 +78,14 @@ const Home = ({ data }) => {
       className="wrapper-site"
     >
       <ScrollHeader isHome={false} />
-      <section className="clearfix">
+      <section className="clearfix ">
         <div className="d-flex align-items-end flex-column">
-          <section className="container-fluid bg-light jumbotron jumbotron-fluid border-top">
-            <div className="container">
+          <section className="container-fluid bg-light jumbotron jumbotron-fluid border-top px-0 px-md-2">
+            <div className="container px-0 px-md-2">
               <div className="row">
                 <div className="col-12 col-lg-10 offset-lg-1">
                   <div
-                    className="clearfix bg-white shadow-sm p-md-3 w-100"
+                    className="clearfix bg-white shadow-sm py-3 p-md-3 w-100"
                     ref={dataListRef}
                   >
                     <h2 className="text-center">Địa điểm mới cập nhật</h2>

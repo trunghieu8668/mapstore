@@ -34,7 +34,6 @@ const ShowPlaceDetail = ({ props = {} }) => {
   // const post = [router]
   const data = props.itemDetail && props.itemDetail.data || null;
   const query = props.itemDetail && props.itemDetail.query;
-  console.log(data)
   const id = query;
   // State
   const categoryId =
@@ -61,7 +60,6 @@ const ShowPlaceDetail = ({ props = {} }) => {
       <>
         <div className="places-detail-wrapper">
           <div className="row pl-xs-12 mb-8 text-xs-left">
-            {console.log(data && data.data.pictures && data.data.pictures.length)}
             <div className={data && data.data.pictures && data.data.pictures.length > 0 ? "col-12" : "col-3 col-lg-3"}>
               {data && data.data.pictures && data.data.pictures.length > 0 ? (
                 <Figure className="position-relative w-100 d-block h-100">
@@ -298,7 +296,7 @@ SinglePlaces.getInitialProps = async ({ query }) => {
   return { itemDetail, placesListLatest };
 };
 
-SinglePlaces.PropTypes = {
+SinglePlaces.propTypes = {
   props: PropTypes.object
 }
 

@@ -22,12 +22,17 @@ const Footer = () => {
           </li>
           <li className="item list-inline-item ml-3">
             <a className="text-muted" href="#">
-              Giải pháp kinh doanh
+              Giải pháp 
             </a>
           </li>
           <li className="item list-inline-item ml-3">
             <a className="text-muted" href="#">
-              Diễn đàn
+              Blog
+            </a>
+          </li>
+          <li className="item list-inline-item ml-3">
+            <a className="text-muted" href="#">
+              Liên hệ
             </a>
           </li>
         </ul>
