@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import PropTypes from "prop-types"
@@ -51,7 +52,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
   useEffect(() => {
     loadRelated();
     // loadPlacesLatestList()
-  }, []);
+  }, [categoryId]);
   const showRelated = () => {
     return related.map((e, i) => <Card data={e} key={i} />);
   };
@@ -156,7 +157,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
                     {data && data.data.website ? (
                       <a
                         target="_blank"
-                        rel="nofollow"
+                        rel="noreferrer"
                         href={`${data.data.website}`}
                         title={data.data.name}
                       >
@@ -213,7 +214,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
     );
   };
   return (
-    <div className="bg-white rounded-4 shadow w-100 p-md-4 p-lg-4 p-xl-4">
+    <div className="bg-white rounded-4 shadow box__content w-100 p-md-4 p-lg-4 p-xl-4">
       {placeInfo()}
       <div className="clearfix w-100 my-2"></div>
       <Share />

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { withRouter } from "next/router";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button } from "primereact/button";
@@ -43,7 +44,7 @@ function BannerSection({ router, title }) {
             className="center-content down"
             onClick={() => scrollToRef("booking")}
           >
-            <img
+            <Image
               alt=""
               className="scroll-down"
               src="/assets/images/event/image-down.png"

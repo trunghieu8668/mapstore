@@ -3,7 +3,7 @@ import slugify from "slugify";
 const Footer = () => {
   return (
     <>
-      <footer className="footer mt-auto text-center text-small position-relative bg-light w-100 border-top pt-3 bg-light">
+      <footer className="footer mt-auto text-center text-small position-relative bg-light w-100 border-top py-3 bg-light">
         <ul className="ul-link list-inline">
           <li className="item list-inline-item ml-3">
             <a className="text-muted" href="/chi-tiet-tin-tuc/gioi-thieu.html">

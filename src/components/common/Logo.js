@@ -9,8 +9,6 @@ const Logo = ({ title, className, children }) => {
     <Link href="/">
       <a
         className={`${className || ""} d-block logo-link `}
-        href="/"
-        title={title}
       >
         <Image
           className="logo-img"

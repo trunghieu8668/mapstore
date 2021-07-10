@@ -1,12 +1,18 @@
-import React, {useState} from 'react';
+/* eslint-disable react/display-name */
+import React, { useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
+
+
 import { Figure, Tabs, Tab } from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
 import parse from "html-react-parser";
+import Alert from './Alert'
 import { map } from "lodash";
 import { PLACES_URL } from "../../../config";
 import 'react-image-gallery/styles/css/image-gallery.css';
+import Share from "../../components/common/Share"
+
 
 const prismicLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 85}`
@@ -17,6 +23,25 @@ const CardDetail = ({ data }) => {
   const picturesData = [...newData.pictures];
   const _pictures = ''
 
+
+
+  // const [isShowLogo, setShowLogo] = useState(false)
+  // picturesData.length > 0 && logoData !== null && setShowLogo(true)
+  // console.log(picturesData.length)
+  // console.log(logoData)
+  // const getSrc = (logo, pictures) => {
+  //   let picture = ""
+  //   // Logo
+  //   if (logo !== null) {
+  //     picture = logo;
+  //   }
+  //   // Pictures[0]
+  //   if (logo === null && pictures.length > 0) {
+  //     picture = pictures[0];
+
+  //   }
+  //   return picture;
+  // }
   const imagePlaces = data && data.data.pictures && data.data.pictures.length > 0 && map(data.data.pictures, picture => {
     return {
       original: picture,
@@ -41,26 +66,9 @@ const CardDetail = ({ data }) => {
       }
     }
   })
-  // const [isShowLogo, setShowLogo] = useState(false)
-  // picturesData.length > 0 && logoData !== null && setShowLogo(true)
-  // console.log(picturesData.length)
-  // console.log(logoData)
-  // const getSrc = (logo, pictures) => {
-  //   let picture = ""
-  //   // Logo
-  //   if (logo !== null) {
-  //     picture = logo;
-  //   }
-  //   // Pictures[0]
-  //   if (logo === null && pictures.length > 0) {
-  //     picture = pictures[0];
-      
-  //   }
-  //   return picture;
-  // }
   return (
     <>
-      <div className="places-detail-wrapper px-3 px-md-0 py-4 py-md-0">
+      <div className="places-detail-wrapper px-md-0 py-4 py-md-0">
         <div className="row pl-xs-12 mb-8 text-xs-left">
           {
             data && data.data.pictures && data.data.pictures.length > 0 && (
@@ -99,26 +107,33 @@ const CardDetail = ({ data }) => {
             <h1 className="font-size-7 text-black-2 font-weight-semibold mb-0">
               {data.data.name}
             </h1>
-            <div className="mb-0">
-              {data.data.categories &&
-                map(data.data.categories, (category, i) => (
-                  <h2 key={i}>
-                    <Link
-                      href={`/${PLACES_URL}/${category.id.replace(
-                        /_/g,
-                        "-"
-                      )}`}
-                    >
-                      <a
-                        className="h6 font-weight-normal"
-                        title={category.name}
+            <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-max">
+              <div className="m-2">
+                {data.data.categories &&
+                  map(data.data.categories, (category, i) => (
+                    <h2 key={i}>
+                      <Link
+                        href={`/${PLACES_URL}/${category.id.replace(
+                          /_/g,
+                          "-"
+                        )}`}
                       >
-                        {category.name}
-                      </a>
-                    </Link>
-                  </h2>
-                ))}
+                        <a
+                          className="h6 font-weight-normal"
+                          title={category.name}
+                        >
+                          {category.name}
+                        </a>
+                      </Link>
+                    </h2>
+                  ))}
+              </div>
+
+              <div className="m-2">
+                <Share />
+              </div>
             </div>
+
           </div>
         </div>
         <Tabs className="tab-menu-items mt-3" defaultActiveKey="tab-1">
@@ -184,7 +199,7 @@ const CardDetail = ({ data }) => {
                       {data.data.website ? (
                         <a
                           target="_blank"
-                          rel="nofollow"
+                          rel="noreferrer"
                           href={`${data.data.website}`}
                           title={data.data.name}
                         >
@@ -218,20 +233,25 @@ const CardDetail = ({ data }) => {
                 </ul>
               </li>
               <li className="item h6 font-weight-normal mb-md-3">
-                <span className="text-muted small me-3">
+                <span className="text-muted small">
                   <span className="icons mr-1"> Ngày tạo: </span>{" "}
                   {data.data.createdDate && (
                     <time>{new Date(data.data.createdDate).toLocaleString('en-GB')}</time>
                   )}
                 </span>
-                <span className="text-muted small ml-5">
+                <span className="text-muted small mx-3">
                   <span className="icons mr-1"> Ngày cập nhật: </span>{" "}
                   {data.data.lastUpdatedDate && (
                     <time>{new Date(data.data.lastUpdatedDate).toLocaleString('en-GB')}</time>
                   )}
                 </span>
+                <span className="text-muted small">
+                  <span className="icons mr-1"> Lượt xem: </span>{" "}
+                  <span>{data.data.views.toLocaleString('en-US')}</span>
+                </span>
               </li>
             </ul>
+            <Alert />
             <div className="d-block mt-5 mb-4">
               <h3 className="h4 font-weight-medium">GIỚI THIỆU</h3>
               <div className="clearfix"></div>
@@ -253,7 +273,7 @@ const CardDetail = ({ data }) => {
           </Tab>
           <Tab tabClassName="tab-menu-link" eventKey="tab-2" title="Sản phẩm">
             Đang cập nhật
-            </Tab>
+          </Tab>
         </Tabs>
       </div>
     </>

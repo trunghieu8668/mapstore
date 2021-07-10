@@ -37,7 +37,7 @@ export const MENUITEMS = [
     activeClass: ""
   },
   {
-    path: "/blog",
+    path: "/",
     title: "Blog",
     type: "oneLink",
     activeClass: ""
@@ -48,12 +48,12 @@ export const MENUITEMS = [
     type: "oneLink",
     activeClass: ""
   },
-  {
-    path: "/dia-diem/them-moi.html",
-    title: "Thêm địa điểm",
-    type: "oneLink",
-    activeClass: "active"
-  },
+  // {
+  //   path: "/dia-diem/them-moi.html",
+  //   title: "Thêm địa điểm",
+  //   type: "oneLink",
+  //   activeClass: "active"
+  // },
   // {
   //   title: 'Cửa hàng', megaMenu: true, megaMenuType: 'small', type: 'sub', children: [
   //     {

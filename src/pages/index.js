@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic'
+import Head from 'next/head';
 
 // Config
 import { API, APIKEY, PAGESIZE } from "../../config";
@@ -31,6 +32,11 @@ const Home = ({ data }) => {
   // State
   const [isLoading, setLoading] = useState(false);
   const dataListRef = useRef(null);
+  const title = "Mapstore - Tìm là thấy";
+  const description = "Trang thông tin địa điểm";
+  const keywords = "thông tin công ty"
+  const url = process.env.NEXT_PUBLIC_SITE_URL
+  const picture = `${process.env.NEXT_PUBLIC_SITE_URL}/assets/images/banner/mapstore-cover-fb.png`
   // Paging
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
@@ -70,60 +76,84 @@ const Home = ({ data }) => {
       </>
     );
   }
+
+  const head = () => (
+    <Head>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <title>{title && title.toUpperCase()}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+
+      <meta property="og:url" itemProp="url" content={url} />
+      <meta property="fb:app_id" content={process.env.NEXT_PUBLIC_APP_ID} />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="vi_VN" />
+      <meta property="og:image" content={picture} />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:site_name" content={process.env.NEXT_PUBLIC_SITE_NAME} />
+      <meta property="article:author" content={process.env.NEXT_PUBLIC_ARTICLE_AUTHOR} />
+      <meta property="article:publisher" content={process.env.NEXT_PUBLIC_ARTICLE_PUBLISHER} />
+    </Head>
+  )
+
+
   return (
-    <Layout
-      title="Mapstore - Tìm là thấy"
-      description="Trang thông tin địa điểm"
-      keywords="thông tin công ty"
-      className="wrapper-site"
-    >
-      <ScrollHeader isHome={false} />
-      <section className="clearfix ">
-        <div className="d-flex align-items-end flex-column">
-          <section className="container-fluid bg-light jumbotron jumbotron-fluid border-top px-0 px-md-2">
-            <div className="container px-0 px-md-2">
-              <div className="row">
-                <div className="col-12 col-lg-10 offset-lg-1">
-                  <div
-                    className="clearfix bg-white shadow-sm py-3 p-md-3 w-100"
-                    ref={dataListRef}
-                  >
-                    <h2 className="text-center">Địa điểm mới cập nhật</h2>
-                    {content}
-                    <div className="clearfix w-100"></div>
-                    <div className="d-flex justify-content-center">
-                      <ReactPaginate
-                        previousLabel={"«"}
-                        nextLabel={"»"}
-                        breakLabel={"..."}
-                        breakClassName={"page-item"}
-                        breakLinkClassName={"page-link"}
-                        pageCount={pageCount}
-                        forcePage={currentPage}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={2}
-                        onPageChange={paginationHandler}
-                        containerClassName={"pagination float-right"}
-                        subContainerClassName={"pages pagination"}
-                        activeClassName={"active"}
-                        pageClassName={"page-item"}
-                        pageLinkClassName={"page-link"}
-                        previousClassName={"page-item"}
-                        nextClassName={"page-item"}
-                        previousLinkClassName={"page-link"}
-                        nextLinkClassName={"page-link"}
-                        disabledClassName="disabled"
-                      />
+    <React.Fragment>
+      {head()}
+      <Layout>
+        <ScrollHeader isHome={false} />
+        <section className="clearfix ">
+          <div className="d-flex align-items-end flex-column">
+            <section className="container-fluid bg-light jumbotron jumbotron-fluid border-top px-0 px-md-2">
+              <div className="container px-md-2">
+                <div className="row">
+                  <div className="col-12 col-lg-10 offset-lg-1">
+                    <div
+                      className="clearfix bg-white shadow-sm py-3 md:p-3 p-md-3 w-100 box__content"
+                      ref={dataListRef}
+                    >
+                      <h2 className="text-center text-3xl font-bold">Địa điểm mới cập nhật</h2>
+                      {content}
+                      <div className="clearfix w-100"></div>
+                      <div className="d-flex justify-content-center">
+                        <ReactPaginate
+                          previousLabel={"«"}
+                          nextLabel={"»"}
+                          breakLabel={"..."}
+                          breakClassName={"page-item"}
+                          breakLinkClassName={"page-link"}
+                          pageCount={pageCount}
+                          forcePage={currentPage}
+                          marginPagesDisplayed={2}
+                          pageRangeDisplayed={2}
+                          onPageChange={paginationHandler}
+                          containerClassName={"pagination float-right"}
+                          subContainerClassName={"pages pagination"}
+                          activeClassName={"active"}
+                          pageClassName={"page-item"}
+                          pageLinkClassName={"page-link"}
+                          previousClassName={"page-item"}
+                          nextClassName={"page-item"}
+                          previousLinkClassName={"page-link"}
+                          nextLinkClassName={"page-link"}
+                          disabledClassName="disabled"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-          <Footer />
-        </div>
-      </section>
-    </Layout>
+            </section>
+            <Footer />
+          </div>
+        </section>
+      </Layout>
+    </React.Fragment>
   );
 };
 

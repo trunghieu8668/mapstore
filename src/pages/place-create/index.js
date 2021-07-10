@@ -7,7 +7,7 @@ import Header from "../../components/common/Header";
 import Footer from "../../components/common/Footer";
 import WithHeaderScroll from "../../common/WithHeaderScroll";
 const ScrollHeader = WithHeaderScroll(Header);
-import PlaceCreateCard from '../../components/place-create/PlaceCreateCard'
+import PlaceCreatePage from '../../components/place-create/PlaceCreatePage'
 
 const PlaceCreate = () => {
   const title = `Thêm mới địa điểm | Mapstore - Tìm là thấy`
@@ -15,15 +15,7 @@ const PlaceCreate = () => {
   const url = ""
   const picture = ""
 
-  const ProviderPlaceCreate = () => {
-    return (
-      <>
-        <PlaceCreateUIProvider>
-          <PlaceCreateCard />
-        </PlaceCreateUIProvider>
-      </>
-    )
-  }
+
   return (
     <>
       <Layout
@@ -41,7 +33,7 @@ const PlaceCreate = () => {
               <Container className="px-0 px-md-2">
                 <Row className="justify-content-md-center">
                   <Col md={8} lg={8}>
-                    <ProviderPlaceCreate />
+                    <PlaceCreatePage />
                   </Col>
                 </Row>
               </Container>

@@ -120,9 +120,9 @@ export const singlePlace = (slug) => {
     .catch((err) => console.log(err));
 };
 
-export const listRelated = (slug) => {
-  return Fetch(
-    `${API}/public/places?categoryId=${slug}&cityId=0&districtId=0&pageIndex=0&pageSize=${PAGESIZE}`,
+export const listRelated = async (categoryId) => {
+  return await Fetch(
+    `${API}/public/places?categoryId=${categoryId}&cityId=0&districtId=0&pageIndex=0&pageSize=${PAGESIZE}`,
     {
       method: "GET",
       headers: {

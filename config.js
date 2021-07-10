@@ -12,7 +12,7 @@ const { publicRuntimeConfig } = getConfig();
 // export const FB_APP_ID = publicRuntimeConfig.FB_APP_ID;
 
 
-export const APP_NAME = publicRuntimeConfig.APP_NAME;
+export const APP_NAME = "Tìm là thấy";
 
 export const PLACES_URL = process.env.PLACES_URL ? process.env.PLACES_URL : 'nhom-dia-diem';
 export const API = process.env.API_URL ? process.env.API_URL : 'https://admin-api.mapstore.vn';

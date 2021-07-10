@@ -1,19 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import moment from "moment";
+import Image from "next/image";
 import { API } from "../../config";
-
+const prismicLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
 const SmallCard = ({ blog }) => {
   return (
     <div className="card">
       <section>
         <Link href={`/blogs/${blog.slug}`}>
           <a>
-            <img
-              className="img img-fluid"
-              style={{ maxHeight: "auto", width: "100%" }}
-              src={`${API}/blog/photo/${blog.slug}`}
-              alt={blog.title}
+            <Image
+              loader={prismicLoader}
+              alt={name}
+              className="img-fluid f-select"
+              priority={true}
+              objectFit="contain"
+              layout="fill"
+              src={getSrc(blog.logo, blog.pictures) || "/assets/images/logo/mapstore-logo-ver.png"}
             />
           </a>
         </Link>
@@ -31,7 +36,6 @@ const SmallCard = ({ blog }) => {
       </div>
 
       <div className="card-body">
-        Posted {moment(blog.updatedAt).fromNow()} by{" "}
         <Link href={`/profile/${blog.postedBy.username}`}>
           <a>{blog.postedBy.username}</a>
         </Link>

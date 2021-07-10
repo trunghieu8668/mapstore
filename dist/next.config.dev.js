@@ -1,15 +1,19 @@
-const path = require('path')
-const withImages = require('next-images');
-const withPlugins = require('next-compose-plugins')
-const withFonts = require('next-fonts');
+"use strict";
+
+var path = require('path');
+
+var withImages = require('next-images');
+
+var withPlugins = require('next-compose-plugins');
+
+var withFonts = require('next-fonts');
 
 module.exports = withFonts({
   enableSvg: true,
-  webpack(config, options) {
+  webpack: function webpack(config, options) {
     return config;
   }
 });
-
 module.exports = {
   poweredByHeader: false,
   generateEtags: false,
@@ -19,22 +23,21 @@ module.exports = {
     webpack5: true,
     strictPostcssConfiguration: true
   }
-}
-const nextConfigImage = {
+};
+var nextConfigImage = {
   images: {
     domains: ["mapstore.vn", "fs.mapstore.vn"],
     deviceSizes: [567, 767, 992, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 512]
-  },
-}
-module.exports = withPlugins([[withImages]], nextConfigImage)
+  }
+};
+module.exports = withPlugins([[withImages]], nextConfigImage);
 
+var withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+});
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
-module.exports = withBundleAnalyzer({})
-// https://github.com/twopluszero/next-images/blob/master/index.js
+module.exports = withBundleAnalyzer({}); // https://github.com/twopluszero/next-images/blob/master/index.js
 // module.exports = ({ dynamicAssetPrefix = false, nextConfig = {} } = {}) => {
 //   return Object.assign({}, nextConfig, {
 //     publicRuntimeConfig: dynamicAssetPrefix
@@ -50,13 +53,11 @@ module.exports = withBundleAnalyzer({})
 //         basePath: "",
 //         fileExtensions: ["jpg", "jpeg", "png", "svg", "gif", "ico", "webp", "jp2", "avif"],
 //       }, nextConfig);
-
 //       if (!options.defaultLoaders) {
 //         throw new Error(
 //           'This plugin is not compatible with Next.js versions below 5.0.0 https://err.sh/next-plugins/upgrade'
 //         )
 //       }
-
 //       config.module.rules.push({
 //         test: new RegExp(`\.(${nextConfig.fileExtensions.join('|')})$`),
 //         // Next.js already handles url() in css/sass/scss files
@@ -82,11 +83,9 @@ module.exports = withBundleAnalyzer({})
 //           }
 //         ]
 //       });
-
 //       if (typeof nextConfig.webpack === 'function') {
 //         return nextConfig.webpack(config, options)
 //       }
-
 //       return config
 //     },
 //     cssLoaderOptions: {
@@ -96,65 +95,60 @@ module.exports = withBundleAnalyzer({})
 // }
 
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: '/thong-tin-cong-ty/dieu-khoan.html',
-        destination: '/about/policy',
-      },
-      {
-        source: '/thong-tin-cong-ty/huong-dan.html',
-        destination: '/about/helpers',
-      },
-      {
-        source: '/thong-tin-cong-ty/gioi-thieu.html',
-        destination: '/about/about',
-      },
-      {
-        source: '/thong-tin-cong-ty/lien-he.html',
-        destination: '/about/contact',
-      },
-      // Wildcard Path Matching - will match `/blog/a` and `/blog/a/b`
-      {
-        source: '/blog/:slug*',
-        destination: '/blog/:slug*',
-      },
-      // thêm địa điểm (place create)
-      {
-        source: '/dia-diem/them-moi.html',
-        destination: '/place-create',
-      },
-      // Dia diem theo thanh pho
-      {
-        source: '/dia-diem/:slug',
-        destination: '/places-by-city/:slug',
-      },
-      // chi tiết địa điểm
-      {
-        source: '/dia-diem/:slug*/:slug*/:slug*/:slug*',
-        destination: '/place-detail/:slug*',
-      },
-      {
-        source: '/:slug',
-        destination: '/place-detail/:slug',
-      },
-      // nhóm địa điểm
-      {
-        source: '/nhom-dia-diem/:slug',
-        destination: '/places/:slug',
-      },
-      // Danh sach loai dia diem
-      {
-        source: '/loai-dia-diem',
-        destination: '/category-group',
-      },
-      {
-        source: '/loai-dia-diem/:slug',
-        destination: '/category-group/:slug',
-      },
+  rewrites: function rewrites() {
+    return regeneratorRuntime.async(function rewrites$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            return _context.abrupt("return", [{
+              source: '/thong-tin-cong-ty/dieu-khoan.html',
+              destination: '/about/policy'
+            }, {
+              source: '/thong-tin-cong-ty/huong-dan.html',
+              destination: '/about/helpers'
+            }, {
+              source: '/thong-tin-cong-ty/gioi-thieu.html',
+              destination: '/about/about'
+            }, {
+              source: '/thong-tin-cong-ty/lien-he.html',
+              destination: '/about/contact'
+            }, // Wildcard Path Matching - will match `/blog/a` and `/blog/a/b`
+            {
+              source: '/blog/:slug*',
+              destination: '/blog/:slug*'
+            }, // thêm địa điểm (place create)
+            {
+              source: '/dia-diem/them-moi.html',
+              destination: '/place-create'
+            }, // Dia diem theo thanh pho
+            {
+              source: '/dia-diem/:slug',
+              destination: '/places-by-city/:slug'
+            }, // chi tiết địa điểm
+            {
+              source: '/dia-diem/:slug*/:slug*/:slug*/:slug*',
+              destination: '/place-detail/:slug*'
+            }, {
+              source: '/:slug',
+              destination: '/place-detail/:slug'
+            }, // nhóm địa điểm
+            {
+              source: '/nhom-dia-diem/:slug',
+              destination: '/places/:slug'
+            }, // Danh sach loai dia diem
+            {
+              source: '/loai-dia-diem',
+              destination: '/category-group'
+            }, {
+              source: '/loai-dia-diem/:slug',
+              destination: '/category-group/:slug'
+            }]);
 
-
-    ]
-  },
-}
-// SiteMap
+          case 1:
+          case "end":
+            return _context.stop();
+        }
+      }
+    });
+  }
+}; // SiteMap

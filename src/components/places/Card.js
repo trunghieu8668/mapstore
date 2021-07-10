@@ -14,8 +14,6 @@ const Card = ({ data }) => {
   const phones = places.phones && places.phones.length > 0 ? places.phones[0] : null
   const name = places.name
 
-
-
   const getSrc = (logo, pictures) => {
     let picture = ""
     // Logo
@@ -29,7 +27,7 @@ const Card = ({ data }) => {
     return picture
   }
   return (
-    <div className="place-item mt-2 mb-4 bg-white rounded p-4 hover-shadow-3">
+    <div className="place-item mt-2 mb-4 bg-white rounded p-lg-4 hover-shadow-3">
       <Row>
         <Col xs={4} lg={3}>
           <Link

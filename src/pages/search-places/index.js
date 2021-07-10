@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { map } from "lodash";
+import Head from 'next/head';
 import { Container, Row, Col } from "react-bootstrap";
 // import slugify from 'slugify'
 import Pagination from "next-pagination";
@@ -8,7 +9,6 @@ import Layout from "../../components/Layout";
 import Header from "../../components/common/Header";
 import Footer from "../../components/common/Footer";
 import { listSearchPlaces, listPlacesByCategoryId } from "../../actions/places";
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../../config";
 // import moment from 'moment';
 import Card from "../../components/places/Card";
 import CardListNoPicture from "../../components/places/CardListNoPicture";
@@ -22,7 +22,6 @@ const ShowResult = ({ props }) => {
   return (
     <>
       {map(data, (b, i) => (
-        // JSON.stringify(b)
         <Card key={i} data={b} />
       ))}
       <div className="clearfix w-100 my-4"></div>
@@ -34,7 +33,7 @@ const ShowAsidePlaceLatest = ({ props = {} }) => {
   return (
     <>
       <div className="aside-group bg-white">
-        <div className="pl-3 pr-3 pt-3">
+        <div className="px-3 pt-3">
           <h5 className="aside-title">Địa điểm mới cập nhật</h5>
         </div>
         {map(data, (e, i) => (
@@ -50,8 +49,33 @@ const SearchPlaces = (props) => {
     ? "Kết quả tìm kiếm cho từ khóa " + props.query.s
     : "";
   const description = null;
+  const keywords = "thông tin công ty"
+  const url = process.env.NEXT_PUBLIC_SITE_URL
+  const picture = `${process.env.NEXT_PUBLIC_SITE_URL}/assets/images/banner/mapstore-cover-fb.png`
+
+  const head = () => (
+    <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <title>{title && title.toUpperCase()}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+
+      <meta property="og:url" itemProp="url" content={url} />
+      <meta property="fb:app_id" content={process.env.NEXT_PUBLIC_APP_ID} />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="vi_VN" />
+      <meta property="og:image" content={picture} />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:site_name" content={process.env.NEXT_PUBLIC_SITE_NAME} />
+      <meta property="article:author" content={process.env.NEXT_PUBLIC_ARTICLE_AUTHOR} />
+      <meta property="article:publisher" content={process.env.NEXT_PUBLIC_ARTICLE_PUBLISHER} />
+    </Head>
+  )
   return (
     <>
+      {head()}
       <Layout
         title={title}
         description={description}

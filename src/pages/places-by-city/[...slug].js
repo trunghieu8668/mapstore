@@ -60,7 +60,7 @@ const ShowPlaceDetail = ({ props = {} }) => {
     );
   };
   return (
-    <div className="bg-white rounded-4 shadow w-100 p-md-4 p-lg-4 p-xl-4">
+    <div className="bg-white rounded-4 shadow box__content w-100 p-md-4 p-lg-4 p-xl-4">
       {placeInfo()}
       <div className="clearfix w-100 my-2"></div>
       <Share />

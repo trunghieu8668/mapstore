@@ -529,7 +529,18 @@ a {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  body {
+    background: #fff;
+  }
+
+  .box__content {
+    box-shadow: none !important;
+  }
+}
+
 @media only screen and (min-width: 991px) {
+
   .header-scroll-wrapper {
     position: relative;
     z-index: 99;

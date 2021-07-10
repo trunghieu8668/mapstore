@@ -4,8 +4,8 @@ const SkeletonLoading = ({ count }) => {
   return (
     <>
       {[...Array(count || 1)].map((e, i) => (
-        <div className="mt-2 mb-4 bg-white rounded p-4">
-          <SkeletonTheme highlightColor="#eee" key={i} className="mb-4">
+        <div key={i} className="mt-2 mb-4 bg-white rounded p-4">
+          <SkeletonTheme highlightColor="#eee"  className="mb-4">
             <Row>
               <Col xs={12} lg={3}>
                 <Skeleton count={1} height={130} />

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { MENUITEMS } from "../../constant/Menu";
@@ -109,6 +110,7 @@ const Nav = () => {
               )}
               {menuItem.type === "link" ? (
                 <Link
+                  passHref
                   href={`${process.env.PUBLIC_URL}${menuItem.path}`}
                   className={`${menuItem.active ? "active" : ""}`}
                   onClick={() => toggletNavActive(menuItem)}
@@ -126,9 +128,8 @@ const Nav = () => {
 
               {/* MEGHA MENU */}
               <div
-                className={`mega-menu-container resize ${
-                  menuItem.active ? "opensubmenu" : ""
-                }`}
+                className={`mega-menu-container resize ${menuItem.active ? "opensubmenu" : ""
+                  }`}
               >
                 {menuItem.megaMenu === true ? (
                   <Container>
@@ -136,50 +137,48 @@ const Nav = () => {
                       {menuItem.children.map((megaMenuItem, i) => {
                         return (
                           <div
-                            className={`${
-                              menuItem.megaMenuType == "small"
-                                ? "col-lg-4"
-                                : menuItem.megaMenuType == "medium"
+                            className={`${menuItem.megaMenuType == "small"
+                              ? "col-lg-4"
+                              : menuItem.megaMenuType == "medium"
                                 ? "col-lg-3"
                                 : menuItem.megaMenuType == "large"
-                                ? "col"
-                                : ""
-                            } `}
+                                  ? "col"
+                                  : ""
+                              } `}
                             key={i}
                           >
                             <div className="menu-container">
                               <a className="menu-head">{megaMenuItem.title}</a>
                               <ul
-                                className={`menu-icon ${
-                                  megaMenuItem.title ? "openSubChildMenu" : ""
-                                }`}
+                                className={`menu-icon ${megaMenuItem.title ? "openSubChildMenu" : ""
+                                  }`}
                               >
                                 {menuItem.title === "Elements"
                                   ? megaMenuItem.children.map(
-                                      (subMegaMenuItem, i) => {
-                                        return (
-                                          <li key={i}>
-                                            <a href={subMegaMenuItem.path}>
-                                              <i
-                                                className={`icon-${subMegaMenuItem.icon}`}
-                                              ></i>
-                                              {subMegaMenuItem.title}
-                                            </a>
-                                          </li>
-                                        );
-                                      }
-                                    )
+                                    (subMegaMenuItem, i) => {
+                                      return (
+                                        <li key={i}>
+                                          <a href={subMegaMenuItem.path}>
+                                            <i
+                                              className={`icon-${subMegaMenuItem.icon}`}
+                                            ></i>
+                                            {subMegaMenuItem.title}
+                                          </a>
+                                        </li>
+                                      );
+                                    }
+                                  )
                                   : megaMenuItem.children.map(
-                                      (subMegaMenuItem, i) => {
-                                        return (
-                                          <li key={i}>
-                                            <a href={subMegaMenuItem.path}>
-                                              {subMegaMenuItem.title}
-                                            </a>
-                                          </li>
-                                        );
-                                      }
-                                    )}
+                                    (subMegaMenuItem, i) => {
+                                      return (
+                                        <li key={i}>
+                                          <a href={subMegaMenuItem.path}>
+                                            {subMegaMenuItem.title}
+                                          </a>
+                                        </li>
+                                      );
+                                    }
+                                  )}
                               </ul>
                             </div>
                           </div>
@@ -193,9 +192,8 @@ const Nav = () => {
               </div>
               {menuItem.children && !menuItem.megaMenu ? (
                 <ul
-                  className={`${
-                    menuItem.active ? "menu-open activeSubmenu" : ""
-                  }`}
+                  className={`${menuItem.active ? "menu-open activeSubmenu" : ""
+                    }`}
                   style={
                     menuItem.active
                       ? { opacity: 1, transition: "opacity 500ms ease-in" }
@@ -226,9 +224,8 @@ const Nav = () => {
                       )}
                       {childrenItem.children ? (
                         <ul
-                          className={`${
-                            childrenItem.active ? "menu-open" : "active"
-                          }`}
+                          className={`${childrenItem.active ? "menu-open" : "active"
+                            }`}
                         >
                           {childrenItem.children.map((childrenSubItem, key) => (
                             <li key={key}>
